@@ -7,3 +7,4 @@ Wallora webapp recreated using React
 - Souvik Basu (@souvikbasu)
 - Victor Rajkumar (@vctc)
 - Priyanka Jayaswal (@priyankajayaswal1)
+- Aryaman Todkar (@aryamantodkar)
