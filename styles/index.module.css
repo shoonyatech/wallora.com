@@ -1,0 +1,39 @@
+.container{
+    display: grid;
+    height: 100vh;
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.2fr 2fr 0.2fr;
+    grid-gap: 0.2rem;
+    grid-template-areas: 
+        "header"
+        "main"
+        "footer";
+}
+.header{
+    background-color: #a7ffeb;
+    padding: 5px;
+    grid-area: header;
+}
+.main{
+    background-color: #73ffba;
+    padding: 5px;
+    grid-area: main;
+}
+.footer{
+    background-color: #18ffff;
+    padding: 5px;
+    grid-area: footer;
+}
+@media only screen and (max-width:550px){
+    .container{
+        grid-template-columns: 1fr;
+        grid-gap: 0.2rem;
+        grid-template-rows: 0.2fr 1fr;
+        grid-template-areas: 
+            "header"
+            "main";
+    }
+    .footer{
+        display: none;
+    }
+}
