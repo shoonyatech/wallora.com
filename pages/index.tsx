@@ -8,9 +8,9 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main>
+      <main className="bg-pink-300">
         <h1 className="title">
-          Welcome to <a href="https://wallora.com">Wallora.com!</a>
+          Welcome to <a className="text-pink-700" href="https://wallora.com">Wallora.com!</a>
         </h1>
       </main>
     </div>
