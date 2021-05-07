@@ -36,10 +36,13 @@ bower_components
 
 # Compiled binary addons (https://nodejs.org/api/addons.html)
 build/Release
+/build
 
 # Dependency directories
 node_modules/
 jspm_packages/
+/.pnp
+.pnp.js
 
 # TypeScript v1 declaration files
 typings/
@@ -77,6 +80,7 @@ typings/
 
 # Next.js build output
 .next
+/out/
 
 # Nuxt.js build / generate output
 .nuxt
@@ -102,3 +106,9 @@ dist
 
 # TernJS port file
 .tern-port
+
+# local env files
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
