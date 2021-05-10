@@ -19,7 +19,13 @@ export default function Home() {
   }
   else
   {
-    bodyContent = <a href="/api/auth/login">Wallora Login</a>;
+    bodyContent = 
+    <a href="/api/auth/login">
+      Wallora Login
+      <div className='pt-10 pb-10'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus, cumque magni. Et earum ullam expedita asperiores esse labore voluptates dolorum odio? Laborum laudantium dignissimos soluta quisquam hic repudiandae eveniet? Fuga.</div>
+      <div className='pt-10 pb-10'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus, cumque magni. Et earum ullam expedita asperiores esse labore voluptates dolorum odio? Laborum laudantium dignissimos soluta quisquam hic repudiandae eveniet? Fuga.</div>
+      <div className='pt-10 pb-10'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus, cumque magni. Et earum ullam expedita asperiores esse labore voluptates dolorum odio? Laborum laudantium dignissimos soluta quisquam hic repudiandae eveniet? Fuga.</div>
+    </a>;
   }
 
   return (
@@ -28,15 +34,15 @@ export default function Home() {
         <title>Wallora</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <header className="bg-green-200 pl-10 pt-5 pb-5">
+      <header className="bg-green-200 pl-10 pt-5 pb-5 pr-10">
         This is header.
       </header>
       <main>
-        <h1 className="bg-green-700 h-screen pl-10 mt-2 pt-10">
+        <h1 className="bg-green-700 pl-10 mt-2 pt-10 pr-10 min-h-screen max-h-full h-full pb-10">
           {bodyContent}
         </h1>
       </main>
-      <footer className="bg-blue-200 p-5 mt-2 ">
+      <footer className="bg-blue-200 p-5 mt-2 pr-10">
         This is footer
       </footer>
     </div>
