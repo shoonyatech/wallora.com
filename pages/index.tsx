@@ -1,5 +1,6 @@
 import React from 'react';
 import Head from "next/head";
+import Header from '../components/header';
 import { useUser } from '@auth0/nextjs-auth0';
 
 export default function Home() {
@@ -28,9 +29,7 @@ export default function Home() {
         <title>Wallora</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <header className="bg-green-200 pl-10 pt-5 pb-5">
-        This is header.
-      </header>
+      <Header/>
       <main>
         <h1 className="bg-green-700 h-screen pl-10 mt-2 pt-10">
           {bodyContent}
