@@ -1,5 +1,5 @@
 import 'tailwindcss/tailwind.css';
-import {AppProps} from 'next/app'
+import { AppProps } from 'next/app';
 import { UserProvider } from '@auth0/nextjs-auth0';
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -10,4 +10,4 @@ function MyApp({ Component, pageProps }: AppProps) {
   );
 }
 
-export default MyApp
+export default MyApp;
