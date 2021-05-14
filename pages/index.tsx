@@ -1,6 +1,7 @@
 import React from 'react';
 import Head from "next/head";
 import Header from '../components/Header';
+import Footer from '../components/Footer';
 import { useUser } from '@auth0/nextjs-auth0';
 
 export default function Home() {
@@ -35,9 +36,7 @@ export default function Home() {
           {bodyContent}
         </h1>
       </main>
-      <footer className="bg-blue-200 p-5 mt-2 ">
-        This is footer
-      </footer>
+      <Footer/>
     </div>
     );
 }
