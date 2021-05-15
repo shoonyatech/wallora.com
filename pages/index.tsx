@@ -28,7 +28,16 @@ export default function Home() {
     <div className='container min-w-full grid-cols-1 grid-rows-3 h-screen'>
       <Head>
         <title>Wallora</title>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="assets/favicon.ico"></link>
+        <link rel="manifest" href="assets/site.webmanifest"></link>
+        <link rel="mask-icon" href="assets/safari-pinned-tab.svg" color="#5bbad5"></link>
+        <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png"></link>
+        <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png"></link>
+        <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png"></link>
+        <meta name="apple-mobile-web-app-title" content="wallora"/>
+        <meta name="application-name" content="wallora"/>
+        <meta name="msapplication-TileColor" content="#da532c"/>
+        <meta name="theme-color" content="#ffffff"/>
       </Head>
       <Header user={user}/>
       <main>
