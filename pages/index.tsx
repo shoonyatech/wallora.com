@@ -38,6 +38,7 @@ export default function Home() {
         <meta name="application-name" content="wallora"/>
         <meta name="msapplication-TileColor" content="#da532c"/>
         <meta name="theme-color" content="#ffffff"/>
+        <link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet" type="text/css"></link>
       </Head>
       <Header user={user}/>
       <main>

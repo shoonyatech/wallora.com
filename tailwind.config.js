@@ -7,6 +7,11 @@ module.exports = {
         'sprite-background': "url('/images/icons.png')",
       })
     },
+    colors: {
+      violet: {
+        200: "#f4dcf4"
+      }
+    }
   },
   variants: {
     extend: {},

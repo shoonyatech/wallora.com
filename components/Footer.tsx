@@ -1,6 +1,6 @@
 export default function Footer(){
     return(
-        <div className="bg-blue-200 p-5 mt-2 flex justify-between">
+        <div className="bg-violet-200 p-5 mt-2 flex justify-between">
                 <span className='mt-auto mb-auto'>This is footer</span>
                 <span className='flex flex-row'>
                     <div className='bg-sprite-background bg-no-repeat' style={{width:60,height:60}}></div>

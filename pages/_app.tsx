@@ -4,6 +4,7 @@ import { UserProvider } from '@auth0/nextjs-auth0';
 import { useEffect } from 'react'
 import { useRouter } from 'next/router'
 
+import "./styles/app.css"
 import * as ga from './../lib/ga'
 
 function MyApp({ Component, pageProps }: AppProps) {
