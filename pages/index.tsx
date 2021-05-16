@@ -2,12 +2,12 @@ import { useUser } from '@auth0/nextjs-auth0'
 import Head from 'next/head'
 import React from 'react'
 
+import FeedBack from '../components/Feedback'
 import Footer from '../components/Footer'
 import Header from '../components/Header'
 
 export default function Home() {
   const { user, error, isLoading } = useUser()
-
   let bodyContent
 
   if (isLoading) return <div>Loading...</div>
@@ -44,7 +44,9 @@ export default function Home() {
       </Head>
       <Header user={user} />
       <main>
-        <h1 className="bg-app-background h-screen pl-10 mt-2 pt-10">{bodyContent}</h1>
+        <h1 className="bg-app-background h-screen pl-10 mt-2 pt-10">
+          {bodyContent} <FeedBack />
+        </h1>
       </main>
       <Footer />
     </div>
