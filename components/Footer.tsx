@@ -1,7 +1,7 @@
 
 export default function Footer(){
     return(
-        <div className="bg-blue-200 pl-5 pr-5 pt-2 pb-2 mt-2 flex justify-between">
+        <div className="bg-secondary pl-5 pr-5 pt-2 pb-2 mt-2 flex justify-between">
                 <span className='mt-auto mb-auto'>
                     <a href='/terms' className='pr-12' target='_blank'>Terms</a>
                     <a href='/privacy' target='_blank'>Privacy Policy</a>
