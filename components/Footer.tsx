@@ -1,6 +1,6 @@
 export default function Footer(){
     return(
-        <div className="pl-5 pr-5 pt-2 pb-2 flex justify-between" style={{backgroundColor:'#f4dcf4'}}>
+        <div className="pl-5 pr-5 pt-2 pb-2 flex justify-between bg-footer">
                 <span className='mt-auto mb-auto flex flex-col'>
                     <a href='/terms' target='_blank'>Terms</a>
                     <a href='/privacy' target='_blank'>Privacy Policy</a>

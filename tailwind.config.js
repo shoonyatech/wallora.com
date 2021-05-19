@@ -5,6 +5,10 @@ module.exports = {
     extend: {
       backgroundImage: theme => ({
         'sprite-background': "url('/images/icons.png')",
+      }),
+      backgroundColor: theme => ({
+        ...theme('colors'),
+        'footer': '#f4dcf4',
       })
     },
   },
