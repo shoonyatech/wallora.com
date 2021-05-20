@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import Footer from '../components/Footer';
+import Footer from '../components/Footer/index';
 export default function Privacy(){
     return(
         <div className='min-w-full grid-cols-1 grid-rows-3'>

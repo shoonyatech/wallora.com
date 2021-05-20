@@ -1,9 +1,8 @@
-
 export default function Footer(){
     return(
-        <div className="bg-secondary pl-5 pr-5 pt-2 pb-2 mt-2 flex justify-between">
-                <span className='mt-auto mb-auto'>
-                    <a href='/terms' className='pr-12' target='_blank'>Terms</a>
+        <div className="pl-5 pr-5 pt-2 pb-2 flex justify-between bg-secondary">
+                <span className='mt-auto mb-auto flex flex-col'>
+                    <a href='/terms' target='_blank'>Terms</a>
                     <a href='/privacy' target='_blank'>Privacy Policy</a>
                 </span>
                 <span className='flex flex-row'>
