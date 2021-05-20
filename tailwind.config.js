@@ -9,7 +9,7 @@ module.exports = {
       'app-background': '#fff',
     },
     extend: {
-      backgroundImage: (theme) => ({
+      backgroundImage: () => ({
         'sprite-background': "url('/images/icons.png')",
       }),
     },
@@ -18,4 +18,4 @@ module.exports = {
     extend: {},
   },
   plugins: [],
-};
+}

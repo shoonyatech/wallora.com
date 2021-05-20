@@ -1,1 +1,12 @@
-node_modules
+node_modules/
+.storybook/
+.github/
+.next/
+lib/
+public/
+package.json
+tsconfig.json
+package-lock.json
+README.md 
+LICENSE
+.eslintrc.json

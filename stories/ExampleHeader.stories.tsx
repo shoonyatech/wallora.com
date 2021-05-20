@@ -1,21 +1,20 @@
-import React from "react";
-import { Story, Meta } from "@storybook/react";
+/* eslint-disable react/jsx-props-no-spreading */
+import { Meta, Story } from '@storybook/react'
+import React from 'react'
 
-import { ExampleHeader, ExampleHeaderProps } from "./ExampleHeader";
+import { ExampleHeader, ExampleHeaderProps } from './ExampleHeader'
 
 export default {
-  title: "Example/Header",
-  component: ExampleHeader
-} as Meta;
+  title: 'Example/Header',
+  component: ExampleHeader,
+} as Meta
 
-const Template: Story<ExampleHeaderProps> = (args) => (
-  <ExampleHeader {...args} />
-);
+const Template: Story<ExampleHeaderProps> = (args) => <ExampleHeader {...args} />
 
-export const LoggedIn = Template.bind({});
+export const LoggedIn = Template.bind({})
 LoggedIn.args = {
-  user: {}
-};
+  user: {},
+}
 
-export const LoggedOut = Template.bind({});
-LoggedOut.args = {};
+export const LoggedOut = Template.bind({})
+LoggedOut.args = {}
