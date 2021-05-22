@@ -1,16 +1,18 @@
+import Button from '@material-ui/core/Button'
 import React from 'react'
 
 const Header = ({ user }: any) => (
-  <div className="bg-secondary pl-10 pt-5 pb-5 flex justify-between">
+  <div className="bg-secondary pl-10  p-5 flex justify-between">
+    <img src="./images/wallora-logo-170x53.jpeg" alt="This is Wallora logo." />
     <span className="text-primary">This is header</span>
     {user ? (
-      <a href="/api/auth/logout" className="pr-10 text-primary">
+      <Button variant="contained" color="primary" href="/api/auth/logout">
         LOGOUT
-      </a>
+      </Button>
     ) : (
-      <a href="/api/auth/login" className="pr-10 text-primary">
+      <Button variant="contained" color="primary" href="/api/auth/login">
         LOGIN
-      </a>
+      </Button>
     )}
   </div>
 )

@@ -7,7 +7,6 @@ module.exports = {
       primary: '#C54582',
       secondary: '#F4DCF4',
       'app-background': '#fff',
-      200: '#f4dcf4',
     },
     extend: {
       backgroundImage: () => ({
