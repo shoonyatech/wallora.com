@@ -1,17 +1,19 @@
 module.exports = {
   purge: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
-  darkMode: false, 
+  darkMode: false,
   theme: {
-    extend: {
-      backgroundImage: theme => ({
-        'sprite-background': "url('/images/icons.png')",
-      })
-    },
+    // compiled the css with the below primary and secondary colors and linked with _app.tsx.
     colors: {
-      violet: {
-        200: "#f4dcf4"
-      }
-    }
+      primary: '#C54582',
+      secondary: '#F4DCF4',
+      'app-background': '#fff',
+      200: '#f4dcf4',
+    },
+    extend: {
+      backgroundImage: () => ({
+        'sprite-background': "url('/images/icons.png')",
+      }),
+    },
   },
   variants: {
     extend: {},
