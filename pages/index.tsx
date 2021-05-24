@@ -2,7 +2,7 @@ import { useUser } from '@auth0/nextjs-auth0'
 import Head from 'next/head'
 import React from 'react'
 
-import Footer from '../components/Footer/index'
+import Footer from '../components/Footer'
 import Header from '../components/Header'
 
 export default function Home() {
@@ -39,6 +39,8 @@ export default function Home() {
         <meta name="application-name" content="wallora" />
         <meta name="msapplication-TileColor" content="#da532c" />
         <meta name="theme-color" content="#ffffff" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700%26display=swap" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
       </Head>
       <Header user={user} />
       <main>
