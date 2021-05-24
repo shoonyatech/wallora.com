@@ -1,18 +1,22 @@
+import { AppBar, Button } from '@material-ui/core'
 import React from 'react'
 
 const Header = ({ user }: any) => (
-  <div className="bg-secondary pl-10 pt-5 pb-5 flex justify-between">
-    <span className="text-primary">This is header</span>
-    {user ? (
-      <a href="/api/auth/logout" className="pr-10 text-primary">
-        LOGOUT
-      </a>
-    ) : (
-      <a href="/api/auth/login" className="pr-10 text-primary">
-        LOGIN
-      </a>
-    )}
-  </div>
+  <AppBar position="static">
+    <div className="bg-secondary pl-10  p-5 flex justify-between">
+      <img src="./images/wallora-logo-170x53.jpeg" alt="This is Wallora logo." />
+      <span className="text-primary">This is header</span>
+      {user ? (
+        <Button variant="contained" color="primary" href="/api/auth/logout">
+          LOGOUT
+        </Button>
+      ) : (
+        <Button variant="contained" color="primary" href="/api/auth/login">
+          LOGIN
+        </Button>
+      )}
+    </div>
+  </AppBar>
 )
 
 export default Header

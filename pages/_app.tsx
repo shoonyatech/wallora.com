@@ -2,11 +2,13 @@
 import '../styles/global.css'
 
 import { UserProvider } from '@auth0/nextjs-auth0'
+import { ThemeProvider } from '@material-ui/styles'
 import { AppProps } from 'next/app'
 import { useRouter } from 'next/router'
 import React, { useEffect } from 'react'
 
 import * as ga from '../lib/ga'
+import MaterialUiTheme from '../styles/material.ui.theme.provider'
 
 function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter()
@@ -28,9 +30,11 @@ function MyApp({ Component, pageProps }: AppProps) {
   }, [router.events])
 
   return (
-    <UserProvider>
-      <Component {...pageProps} />
-    </UserProvider>
+    <ThemeProvider theme={MaterialUiTheme}>
+      <UserProvider>
+        <Component {...pageProps} />
+      </UserProvider>
+    </ThemeProvider>
   )
 }
 
