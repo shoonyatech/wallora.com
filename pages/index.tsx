@@ -3,27 +3,14 @@ import Head from 'next/head'
 import React from 'react'
 
 import Bottom from '../components/Bottom'
-import FeedBack from '../components/Feedback'
+import MainContent from '../components/home/MainContent'
 import Top from '../components/Top'
 
 export default function Home() {
   const { user, error, isLoading } = useUser()
-  let bodyContent
 
   if (isLoading) return <div>Loading...</div>
   if (error) return <div>{error.message}</div>
-
-  if (user) {
-    bodyContent = (
-      <h1 className="ml-8">
-        Welcome to <a href="https://wallora.com">Wallora.com!</a>
-        <br />
-        Wallora {user.name}!
-      </h1>
-    )
-  } else {
-    bodyContent = <h1 className="text-primary">Please Login</h1>
-  }
 
   return (
     <div className="container min-w-full grid-cols-1 grid-rows-3 h-screen">
@@ -43,11 +30,7 @@ export default function Home() {
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
       </Head>
       <Top user={user} />
-      <main>
-        <h1 className="bg-app-background h-screen pl-10 mt-2 pt-10">
-          {bodyContent} <FeedBack />
-        </h1>
-      </main>
+      <MainContent />
       <Bottom user={user} />
     </div>
   )

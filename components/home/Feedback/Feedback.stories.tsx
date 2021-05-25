@@ -1,7 +1,7 @@
 import { ApolloProvider } from '@apollo/client'
 import React from 'react'
 
-import GetApolloClient from '../../apis/apollo.client'
+import GetApolloClient from '../../../apis/apollo.client'
 import Feedback from '.'
 
 export default {

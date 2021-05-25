@@ -1,4 +1,5 @@
 module.exports = {
+  mode: 'jit',
   purge: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
   darkMode: false,
   theme: {
@@ -9,6 +10,7 @@ module.exports = {
       boxShadow: {
         fb: '0 -2px 5px rgb(128,128,128)',
         fbpanel: '0 1px 10px grey',
+        img: '2px 3px 12px #d3d3d3',
       },
       // compiled the css with the below primary and secondary colors and linked with _app.tsx.
       colors: {
@@ -46,6 +48,9 @@ module.exports = {
           'Courier New',
           'monospace',
         ],
+      },
+      flex: {
+        2: '2',
       },
     },
   },
