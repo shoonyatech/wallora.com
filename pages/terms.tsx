@@ -1,35 +1,23 @@
-// TODO: fix eslint errors - Remove below comments and fix the linting errors
-/* eslint-disable jsx-a11y/alt-text */
-/* eslint-disable react/react-in-jsx-scope */
 import Head from 'next/head'
+import React from 'react'
 
 import Footer from '../components/Footer/index'
+import Header from '../components/Header/index'
 
 export default function Terms() {
   return (
     <div className="min-w-full grid-cols-1 grid-rows-3">
       <Head>
-        <link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet" type="text/css" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;300&display=swap"
+          rel="stylesheet"
+        />
       </Head>
-      <div
-        style={{
-          backgroundColor: '#f4dcf4',
-          paddingLeft: '20px',
-          paddingTop: '25px',
-          paddingBottom: '20px',
-        }}
-      >
-        <img src="/images/wallora-logo-170x53.jpeg" />
-      </div>
-      <div className="mt-16" style={{ marginLeft: '500px', marginRight: '500px' }}>
-        <span style={{ fontSize: '2.25em' }}>Terms of Use</span>
-        <p
-          style={{
-            font: '100% Roboto,"Segoe UI",Helvetica;',
-            color: '#261919',
-          }}
-          className="ml-1 mt-8"
-        >
+      <Header />
+      <div className="m-96 my-16 font-sans">
+        <h1>Terms of Use</h1>
+        <p>
           Please read the following terms and conditions carefully before registering, accessing, browsing, downloading
           or using the Site (defined below). By accessing or using the Site or by using the Service (defined below), you
           agree to be bound by these terms and conditions set forth below including any additional guidelines and future
@@ -49,14 +37,8 @@ export default function Terms() {
           You shall re-visit the “Terms & Conditions” link from time to time to stay abreast of any changes that the
           “Site” may introduce.
         </p>
-        <div className="font-semibold ml-1 mt-8">Eligibility</div>
-        <p
-          style={{
-            font: '100% Roboto,"Segoe UI",Helvetica;',
-            color: '#261919',
-          }}
-          className="ml-1 mt-8"
-        >
+        <h2>Eligibility</h2>
+        <p>
           The services are not available to persons under the age of 18 or to anyone previously suspended or removed
           from the services by Wallora. By accepting these Terms & Conditions or by otherwise using the Services or the
           Site, You represent that You are at least 18 years of age and have not been previously suspended or removed
@@ -65,14 +47,8 @@ export default function Terms() {
           any person or entity, or falsely state or otherwise misrepresent identity, age or affiliation with any person
           or entity.
         </p>
-        <div className="font-semibold ml-1 mt-8">Use of Site</div>
-        <p
-          style={{
-            font: '100% Roboto,"Segoe UI",Helvetica;',
-            color: '#261919',
-          }}
-          className="ml-1 mt-8"
-        >
+        <h2>Use of Site</h2>
+        <p>
           You understand that except for information, products or services clearly indicated as being supplied by the
           Wallora, we do not operate, control, or endorse any information, products or services on the Internet in
           anyway. You also understand that Wallora cannot and does not guarantee or warrant that files available for
@@ -80,284 +56,102 @@ export default function Terms() {
           responsible for implementing procedures to satisfy your particular requirements and for accuracy of data input
           and output.
         </p>
-        <div className="font-semibold ml-1 mt-8">Prohibited Conduct</div>
-        <p
-          style={{
-            font: '100% Roboto,"Segoe UI",Helvetica;',
-            color: '#261919',
-          }}
-          className="ml-1 mt-8"
-        >
-          By using the Services you agree not to:
-        </p>
-        <ul className="list-disc ml-1 mt-1">
-          <li
-            style={{
-              font: '100% Roboto,"Segoe UI",Helvetica;',
-              color: '#261919',
-            }}
-            className="mt-1"
-          >
+        <h2>Prohibited Conduct</h2>
+        <p>By using the Services you agree not to:</p>
+        <ul>
+          <li>
             use the Services for any purposes other than to access the Services in accordance with these Terms and
             Conditions and as such services are offered by Wallora
           </li>
-          <li
-            style={{
-              font: '100% Roboto,"Segoe UI",Helvetica;',
-              color: '#261919',
-            }}
-            className="mt-1"
-          >
+          <li>
             impersonate any person or entity, falsely claim or otherwise misrepresent an affiliation with any person or
             entity, or access the accounts of others without permission, forge another persons’ digital signature,
             misrepresent the source, identity, or content of information transmitted via the Services, perform any other
             similar fraudulent activity
           </li>
-          <li
-            style={{
-              font: '100% Roboto,"Segoe UI",Helvetica;',
-              color: '#261919',
-            }}
-            className="mt-1"
-          >
-            infringe our or any third party’s intellectual property rights, rights of publicity or privacy
-          </li>
-          <li
-            style={{
-              font: '100% Roboto,"Segoe UI",Helvetica;',
-              color: '#261919',
-            }}
-            className="mt-1"
-          >
+          <li>infringe our or any third party’s intellectual property rights, rights of publicity or privacy</li>
+          <li>
             use the Services if You are under the age of eighteen (18) without a parental sponsor or in any event use
             the Services if You are under the age of thirteen (13) years old even with a parental sponsor and in
             accordance with applicable law
           </li>
-          <li
-            style={{
-              font: '100% Roboto,"Segoe UI",Helvetica;',
-              color: '#261919',
-            }}
-            className="mt-1"
-          >
+          <li>
             post or transmit any message which is libelous, defamatory or which discloses private or personal matters
             concerning any person
           </li>
-          <li
-            style={{
-              font: '100% Roboto,"Segoe UI",Helvetica;',
-              color: '#261919',
-            }}
-            className="mt-1"
-          >
+          <li>
             refuse to cooperate in an investigation or provide confirmation of Your identity or any other information
             You provide to Wallora
           </li>
-          <li
-            style={{
-              font: '100% Roboto,"Segoe UI",Helvetica;',
-              color: '#261919',
-            }}
-            className="mt-1"
-          >
+          <li>
             remove, circumvent, disable, damage or otherwise interfere with security-related features of the Services
             and the Site or features that enforce limitations on the use of the Services
           </li>
-          <li
-            style={{
-              font: '100% Roboto,"Segoe UI",Helvetica;',
-              color: '#261919',
-            }}
-            className="mt-1"
-          >
+          <li>
             reverse engineer, decompile, disassemble or otherwise attempt to discover the source code of the Services or
             any part thereof, except and only to the extent that such prohibition is expressly prohibited by applicable
             law notwithstanding this limitation
           </li>
-          <li
-            style={{
-              font: '100% Roboto,"Segoe UI",Helvetica;',
-              color: '#261919',
-            }}
-            className="mt-1"
-          >
+          <li>
             use the Services in any manner that could damage, disable, overburden, or impair it, including, without
             limitation, using the Services in an automated manner
           </li>
-          <li
-            style={{
-              font: '100% Roboto,"Segoe UI",Helvetica;',
-              color: '#261919',
-            }}
-            className="mt-1"
-          >
+          <li>
             modify, adapt, translate or create derivative works based upon the Services and the Site or any part
             thereof, except and only to the extent that such prohibition is expressly prohibited by applicable law
             notwithstanding this limitation
           </li>
-          <li
-            style={{
-              font: '100% Roboto,"Segoe UI",Helvetica;',
-              color: '#261919',
-            }}
-            className="mt-1"
-          >
+          <li>
             intentionally interfere with or damage operation of the Services or any other user’s enjoyment of it, by any
             means, including uploading or otherwise disseminating viruses, adware, spyware, worms, or other malicious
             code or file with contaminating or destructive features
           </li>
-          <li
-            style={{
-              font: '100% Roboto,"Segoe UI",Helvetica;',
-              color: '#261919',
-            }}
-            className="mt-1"
-          >
+          <li>
             use any robot, spider, other automatic device, or manual process to monitor or copy the Site without prior
             written permission
           </li>
-          <li
-            style={{
-              font: '100% Roboto,"Segoe UI",Helvetica;',
-              color: '#261919',
-            }}
-            className="mt-1"
-          >
-            interfere or disrupt this Site or networks connected to this Site
-          </li>
-          <li
-            style={{
-              font: '100% Roboto,"Segoe UI",Helvetica;',
-              color: '#261919',
-            }}
-            className="mt-1"
-          >
+          <li>interfere or disrupt this Site or networks connected to this Site</li>
+          <li>
             take any action that imposes an unreasonably or disproportionately large load on our infrastructure/ network
           </li>
-          <li
-            style={{
-              font: '100% Roboto,"Segoe UI",Helvetica;',
-              color: '#261919',
-            }}
-            className="mt-1"
-          >
+          <li>
             use any device, software or routine to bypass the Site’s robot exclusion headers, or interfere or attempt to
             interfere, with the Services
           </li>
-          <li
-            style={{
-              font: '100% Roboto,"Segoe UI",Helvetica;',
-              color: '#261919',
-            }}
-            className="mt-1"
-          >
+          <li>
             forge headers or manipulate identifiers or other data in order to disguise the origin of any content
             transmitted through our Site or to manipulate your presence on our Site
           </li>
-          <li
-            style={{
-              font: '100% Roboto,"Segoe UI",Helvetica;',
-              color: '#261919',
-            }}
-            className="mt-1"
-          >
-            sell the Services, information, or software associated with or derived from it
-          </li>
-          <li
-            style={{
-              font: '100% Roboto,"Segoe UI",Helvetica;',
-              color: '#261919',
-            }}
-            className="mt-1"
-          >
+          <li>sell the Services, information, or software associated with or derived from it</li>
+          <li>
             use the facilities and capabilities of the Site to conduct any activity or solicit the performance of any
             illegal activity or other activity which infringes the rights of others
           </li>
-          <li
-            style={{
-              font: '100% Roboto,"Segoe UI",Helvetica;',
-              color: '#261919',
-            }}
-            className="mt-1"
-          >
-            breach this Agreement or any other Wallora agreement or policy
-          </li>
-          <li
-            style={{
-              font: '100% Roboto,"Segoe UI",Helvetica;',
-              color: '#261919',
-            }}
-            className="mt-1"
-          >
-            provide false, inaccurate or misleading information
-          </li>
-          <li
-            style={{
-              font: '100% Roboto,"Segoe UI",Helvetica;',
-              color: '#261919',
-            }}
-            className="mt-1"
-          >
+          <li>breach this Agreement or any other Wallora agreement or policy</li>
+          <li>provide false, inaccurate or misleading information</li>
+          <li>
             use the Site to collect or obtain personal information, including without limitation, financial information,
             about other users of the Site
           </li>
-          <li
-            style={{
-              font: '100% Roboto,"Segoe UI",Helvetica;',
-              color: '#261919',
-            }}
-            className="mt-1"
-          >
-            purchase Services with what Wallora reasonably believes to be potentially fraudulent funds
-          </li>
-          <li
-            style={{
-              font: '100% Roboto,"Segoe UI",Helvetica;',
-              color: '#261919',
-            }}
-            className="mt-1"
-          >
+          <li>purchase Services with what Wallora reasonably believes to be potentially fraudulent funds</li>
+          <li>
             use the Services in a manner that results in or may result in complaints, disputes, reversals, chargebacks,
             fees, fines, penalties and other liability to Wallora, a third party or You
           </li>
-          <li
-            style={{
-              font: '100% Roboto,"Segoe UI",Helvetica;',
-              color: '#261919',
-            }}
-            className="mt-1"
-          >
+          <li>
             use the Services in a manner that Wallora or any payment card network reasonably believe to be an abuse of
             the payment card system or a violation of payment card network rules
           </li>
-          <li
-            style={{
-              font: '100% Roboto,"Segoe UI",Helvetica;',
-              color: '#261919',
-            }}
-            className="mt-1"
-          >
+          <li>
             take any action that may cause Wallora to lose any of the Services from its service providers, Telcos,
             payment processors or other suppliers
           </li>
-          <li
-            style={{
-              font: '100% Roboto,"Segoe UI",Helvetica;',
-              color: '#261919',
-            }}
-            className="mt-1"
-          >
+          <li>
             send automated request of any kind to the Site’s system without express permission in advance from Wallora.
           </li>
         </ul>
-        <div className="font-semibold mt-1 mt-8">Termination; Agreement Violations</div>
-        <p
-          style={{
-            font: '100% Roboto,"Segoe UI",Helvetica;',
-            color: '#261919',
-          }}
-          className="mt-8"
-        >
+        <h2>Termination; Agreement Violations</h2>
+        <p>
           You agree that Wallora, in its sole discretion, for any or no reason, and without penalty, may suspend or
           terminate your account (or any part thereof) or your use of the Services and remove and discard all or any
           part of your account, your user profile, or your recipient profile, at any time. Wallora may also in its sole
@@ -368,14 +162,8 @@ export default function Terms() {
           appropriate law enforcement authorities. These remedies are in addition to any other remedies Wallora may have
           at law or in equity. Upon termination for any reason, you agree to immediately stop using the Services.
         </p>
-        <div className="font-semibold mt-1 mt-8">Limitation of Liability and Damages</div>
-        <p
-          style={{
-            font: '100% Roboto,"Segoe UI",Helvetica;',
-            color: '#261919',
-          }}
-          className="mt-8"
-        >
+        <h2>Limitation of Liability and Damages</h2>
+        <p>
           In no event will Wallora or its contractors, agents, licensors, partners, suppliers be liable to you for any
           special, indirect, incidental, consequential, punitive, reliance, or exemplary damages (including without
           limitation lost business opportunities, lost revenues, or loss of anticipated profits or any other pecuniary
@@ -400,14 +188,8 @@ export default function Terms() {
           liability will be limited to the fullest extent permitted by applicable law. This paragraph shall survive
           termination of this Agreement.
         </p>
-        <div className="font-semibold mt-1 mt-8">Indemnification</div>
-        <p
-          style={{
-            font: '100% Roboto,"Segoe UI",Helvetica;',
-            color: '#261919',
-          }}
-          className="mt-8"
-        >
+        <h2>Indemnification</h2>
+        <p>
           You agree to indemnify, save, and hold Wallora, its affiliates, contractors, employees, officers, directors,
           agents and its third party suppliers, licensors, and partners harmless from any and all claims, losses,
           damages, and liabilities, costs and expenses, including without limitation legal fees and expenses, arising
@@ -419,14 +201,8 @@ export default function Terms() {
           action, or proceeding brought by a third party that is subject to the foregoing indemnification upon becoming
           aware of it. This paragraph shall survive termination of this Agreement.
         </p>
-        <div className="font-semibold mt-1 mt-8">Disclaimer; No Warranties</div>
-        <p
-          style={{
-            font: '100% Roboto,"Segoe UI",Helvetica;',
-            color: '#261919',
-          }}
-          className="mt-8"
-        >
+        <h2>Disclaimer; No Warranties</h2>
+        <p>
           To the fullest extent permissible pursuant to applicable law, Wallora and its third-party partners, licensors,
           and suppliers disclaim all warranties, statutory, express or implied, including, but not limited to, implied
           warranties of Merchantability, fitness for a particular purpose, and non-infringement of proprietary rights.
@@ -458,14 +234,8 @@ export default function Terms() {
           interruption, loss of programs or information, and the like) arising out of the use of or inability to use the
           site.
         </p>
-        <div className="font-semibold mt-1 mt-8">Ownership; Proprietary Rights</div>
-        <p
-          style={{
-            font: '100% Roboto,"Segoe UI",Helvetica;',
-            color: '#261919',
-          }}
-          className="mt-8"
-        >
+        <h2>Ownership; Proprietary Rights</h2>
+        <p>
           The Services and the Site are owned and operated by Wallora and/or third party licensors. The visual
           interfaces, graphics, design, compilation, information, computer code (including source code and object code),
           products, software, services, and all other elements of the Services and the Site provided by Wallora (the
@@ -484,14 +254,8 @@ export default function Terms() {
           therewith. You agree to perform such acts and execute such documents as may be reasonably necessary to perfect
           the foregoing rights.
         </p>
-        <div className="font-semibold mt-1 mt-8">Modification of this Agreement</div>
-        <p
-          style={{
-            font: '100% Roboto,"Segoe UI",Helvetica;',
-            color: '#261919',
-          }}
-          className="mt-8"
-        >
+        <h2>Modification of this Agreement</h2>
+        <p>
           Wallora reserves the right to change, modify, add, or remove portions of this Agreement (each, a “change”) at
           any time by posting notification to the Site or otherwise communicating the notification to you. The changes
           will become effective, and shall be deemed accepted by you, 24 hours after the initial posting and shall apply
@@ -500,38 +264,20 @@ export default function Terms() {
           Services. For certain changes, Wallora may be required under applicable law to give you advance notice, and
           Wallora will comply with such requirements.
         </p>
-        <div className="font-semibold mt-1 mt-8">Notice</div>
-        <p
-          style={{
-            font: '100% Roboto,"Segoe UI",Helvetica;',
-            color: '#261919',
-          }}
-          className="mt-8"
-        >
+        <h2>Notice</h2>
+        <p>
           Wallora may provide you with notices and communications by email, regular mail or postings on the Site or by
           any other reasonable means. Except as otherwise set forth herein, notice to Wallora must be sent by courier or
           registered mail to Wallora Personal Finance Management Services LLP, 4 Broad Street, Kolkata - 700 019, India.
         </p>
-        <div className="font-semibold mt-1 mt-8">Waiver</div>
-        <p
-          style={{
-            font: '100% Roboto,"Segoe UI",Helvetica;',
-            color: '#261919',
-          }}
-          className="mt-8"
-        >
+        <h2>Waiver</h2>
+        <p>
           The failure of Wallora to exercise or enforce any right or provision of this Agreement will not constitute a
           waiver of such right or provision. Any waiver of any provision of this Agreement will be effective only if in
           writing and signed by Wallora.
         </p>
-        <div className="font-semibold mt-1 mt-8">Arbitration</div>
-        <p
-          style={{
-            font: '100% Roboto,"Segoe UI",Helvetica;',
-            color: '#261919',
-          }}
-          className="mt-8"
-        >
+        <h2>Arbitration</h2>
+        <p>
           Wallora may elect to resolve any dispute, controversy or claim arising out of or relating to this Agreement or
           Service provided in connection with this Agreement by binding arbitration in accordance with the provisions of
           the Indian Arbitration & Conciliation Act, 1996. Any such dispute, controversy or claim shall be arbitrated on
@@ -546,111 +292,57 @@ export default function Terms() {
           arbitrations, each party will bear the expense of its own lawyers and preparation. The language of Arbitration
           shall be English.
         </p>
-        <div className="font-semibold mt-1 mt-8">Governing Law and Forum for Disputes</div>
-        <p
-          style={{
-            font: '100% Roboto,"Segoe UI",Helvetica;',
-            color: '#261919',
-          }}
-          className="mt-8"
-        >
+        <h2>Governing Law and Forum for Disputes</h2>
+        <p>
           Except as otherwise agreed by the parties or as described in the Arbitration section above, you agree that any
           claim or dispute you may have against Wallora must be resolved by a court located in Bangalore, India. You
           agree to submit to the personal jurisdiction of the courts located within Bangalore, India for the purpose of
           litigating all such claims or disputes. This Agreement shall be governed by the laws of India, without giving
           effect to any principles of conflicts of law.
         </p>
-        <div className="font-semibold mt-1 mt-8">Severability</div>
-        <p
-          style={{
-            font: '100% Roboto,"Segoe UI",Helvetica;',
-            color: '#261919',
-          }}
-          className="mt-8"
-        >
+        <h2>Severability</h2>
+        <p>
           If any provision of this Agreement is held to be unlawful, void, invalid or otherwise unenforceable, then that
           provision will be limited or eliminated from this Agreement to the minimum extent required, and the remaining
           provisions will remain valid and enforceable.
         </p>
-        <div className="font-semibold mt-1 mt-8">Assignment</div>
-        <p
-          style={{
-            font: '100% Roboto,"Segoe UI",Helvetica;',
-            color: '#261919',
-          }}
-          className="mt-8"
-        >
+        <h2>Assignment</h2>
+        <p>
           This Agreement, and any rights granted hereunder, may not be transferred or assigned by you without our prior
           written consent which may be withheld in our sole discretion, but may be assigned by us without restriction.
           Any assignment attempted to be made in violation of this provision shall be void and of no effect.
         </p>
-        <div className="font-semibold mt-1 mt-8">Survival</div>
-        <p
-          style={{
-            font: '100% Roboto,"Segoe UI",Helvetica;',
-            color: '#261919',
-          }}
-          className="mt-8"
-        >
+        <h2>Survival</h2>
+        <p>
           Upon termination of this Agreement, any provision which, by its nature or express terms should survive, will
           survive such termination or expiration as applied to transfers and relationship prior to such termination or
           expiration.
         </p>
-        <div className="font-semibold mt-1 mt-8">Headings</div>
-        <p
-          style={{
-            font: '100% Roboto,"Segoe UI",Helvetica;',
-            color: '#261919',
-          }}
-          className="mt-8"
-        >
+        <h2>Headings</h2>
+        <p>
           The heading references herein are for convenience purposes only, do not constitute a part of these Terms and
           Conditions, and will not be deemed to limit or affect any of the provisions hereof.
         </p>
-        <div className="font-semibold mt-1 mt-8">Entire Agreement</div>
-        <p
-          style={{
-            font: '100% Roboto,"Segoe UI",Helvetica;',
-            color: '#261919',
-          }}
-          className="mt-8"
-        >
+        <h2>Entire Agreement</h2>
+        <p>
           This is the entire agreement between you and Wallora relating to the subject matter hereof and will not be
           modified except in writing, signed by both parties, or by a change to this Agreement made by Wallora in
           accordance with the terms of this Agreement.
         </p>
-        <div className="font-semibold mt-1 mt-8">Confidentiality</div>
-        <p
-          style={{
-            font: '100% Roboto,"Segoe UI",Helvetica;',
-            color: '#261919',
-          }}
-          className="mt-8"
-        >
+        <h2>Confidentiality</h2>
+        <p>
           Privacy of communication is subject to the terms of the certificate of authorization granted by the RBI and
           RBI notifications/directives etc. You specifically agree that in order to facilitate the provision of
           Wallora.com website, Wallora may be required to disclose any information or particulars pertaining to you to
           any authority, statutory or otherwise.
         </p>
-        <div className="font-semibold mt-1 mt-8">Assignment</div>
-        <p
-          style={{
-            font: '100% Roboto,"Segoe UI",Helvetica;',
-            color: '#261919',
-          }}
-          className="mt-8"
-        >
+        <h2>Assignment</h2>
+        <p>
           Wallora shall have the right to assign/transfer these presents to any third party including its holding
           company, subsidiaries, affiliates, associates group companies.
         </p>
-        <div className="font-semibold mt-1 mt-8">Intellectual Property Rights</div>
-        <p
-          style={{
-            font: '100% Roboto,"Segoe UI",Helvetica;',
-            color: '#261919',
-          }}
-          className="mt-8"
-        >
+        <h2>Intellectual Property Rights</h2>
+        <p>
           We, or our licensors, own all right, title and interest, including, but not limited to all copyright,
           trademark, patent, trade secret or other proprietary rights (“IP Rights”), in and to the Site, the Platform,
           the Usage Data. You shall not reproduce, distribute, transmit, modify, create derivative works, display,
@@ -659,42 +351,27 @@ export default function Terms() {
           competing product. Wallora.com is owned by Wallora Personal Finance Management Services LLP. Unauthorized use
           is strictly prohibited. All rights are expressly reserved to Wallora.
         </p>
-        <div className="font-semibold mt-1 mt-8">Disclaimer</div>
-        <p
-          style={{
-            font: '100% Roboto,"Segoe UI",Helvetica;',
-            color: '#261919',
-          }}
-          className="mt-8"
-        >
-          WE MAKE NO WARRANTY, EXPRESS OR IMPLIED, WITH RESPECT TO THE SITE, THE PLATFORM/NETWORK AND SERVICES OFFERED.
-          WE EXPRESSLY DISCLAIM THE IMPLIED WARRANTIES OF NONINFRINGEMENT, MERCHANTABILITY, AND FITNESS FOR ANY
-          PARTICULAR PURPOSE. We provide the Site, the Platform/Network and any other technology and services on the
-          Site on an “as is”, “where is”, “with all faults” basis. We do not warrant that the Site or the Platform any
-          products and services shown or described on the Site, or other technology and services will be uninterrupted,
-          error-free, available or operational at any particular time, or that any known defects will be corrected.
+        <h2>Disclaimer</h2>
+        <p>
+          <span className="uppercase">
+            We make no warranty, express or implied, with respect to the site, the platform/network and services
+            offered. we expressly disclaim the implied warranties of noninfringement, merchantability, and fitness for
+            any particular purpose.
+          </span>
+          We provide the Site, the Platform/Network and any other technology and services on the Site on an “as is”,
+          “where is”, “with all faults” basis. We do not warrant that the Site or the Platform any products and services
+          shown or described on the Site, or other technology and services will be uninterrupted, error-free, available
+          or operational at any particular time, or that any known defects will be corrected.
         </p>
-        <div className="font-semibold mt-1 mt-8">Waiver and Release</div>
-        <p
-          style={{
-            font: '100% Roboto,"Segoe UI",Helvetica;',
-            color: '#261919',
-          }}
-          className="mt-8"
-        >
+        <h2>Waiver and Release</h2>
+        <p>
           To the maximum extent permitted by law, you waive, release, discharge and hold harmless Wallora, its
           affiliated and subsidiary companies, and each of their directors, officers, employees, and agents, from any
           and all claims, losses, damages, liabilities, expenses and causes of action arising out of your use of the
           Platform.
         </p>
-        <div className="font-semibold mt-1 mt-8">Consent to Electronic Communications and Transactions</div>
-        <p
-          style={{
-            font: '100% Roboto,"Segoe UI",Helvetica;',
-            color: '#261919',
-          }}
-          className="mt-8"
-        >
+        <h2>Consent to Electronic Communications and Transactions</h2>
+        <p>
           By registering to use the Site, below, you consent to conduct transactions and receive communications, notices
           and information from us electronically, whether sent by e-mail or other electronic means. Electronic
           communications shall be deemed to have been received by you when We send the electronic communication to the
@@ -706,54 +383,32 @@ export default function Terms() {
           previously received electronically. You agree to notify us promptly if your email address or other contact
           information changes by updating your account information or contacting us.
         </p>
-        <div className="font-semibold mt-1 mt-8">Limitation of Liability</div>
-        <p
-          style={{
-            font: '100% Roboto,"Segoe UI",Helvetica;',
-            color: '#261919',
-          }}
-          className="mt-8"
-        >
-          NOTWITHSTANDING ANYTHING TO THE CONTRARY CONTAINED HEREIN, NEITHER WALLORA, NOR ITS AFFILIATED COMPANIES,
-          SUBSIDIARIES, OFFICERS, DIRECTORS, EMPLOYEES OR ANY RELATED PARTY SHALL HAVE ANY LIABILITY TO USERS OR TO ANY
-          THIRD PARTY FOR ANY INDIRECT, INCIDENTAL, SPECIAL OR CONSEQUENTIAL DAMAGES OR ANY LOSS OF REVENUE OR PROFITS
-          ARISING UNDER OR RELATING TO THESE TERMS, THE SITE OR THE OFFERINGS, EVEN IF ANY OF SAID PARTIES HAD BEEN
-          ADVISED OF, KNEW OF, OR SHOULD HAVE KNOWN OF THE POSSIBILITY OF SUCH DAMAGES.
-        </p>
-        <p
-          style={{
-            font: '100% Roboto,"Segoe UI",Helvetica;',
-            color: '#261919',
-          }}
-          className="mt-8"
-        >
-          TO THE MAXIMUM EXTENT PERMITTED BY LAW, OUR MAXIMUM AGGREGATE LIABILITY TO YOU FOR ANY CAUSES WHATSOEVER, AND
-          REGARDLESS OF THE FORM OF ACTION (WHETHER LIABILITY ARISES DUE TO NEGLIGENCE OR OTHER TORT, BREACH OF
-          CONTRACT, VIOLATION OF STATUTE, MISREPRESENTATION OR FOR ANY OTHER REASON), WILL AT ALL TIMES BE LIMITED TO
-          INR ONE HUNDRED (INR 100).
-        </p>
-        <div className="font-semibold mt-1 mt-8">Choice of Law and Dispute Resolution</div>
-        <p
-          style={{
-            font: '100% Roboto,"Segoe UI",Helvetica;',
-            color: '#261919',
-          }}
-          className="mt-8"
-        >
+        <h2>Limitation of Liability</h2>
+        <div>
+          <p className="uppercase">
+            Notwithstanding anything to the contrary contained herein, neither wallora, nor its affiliated companies,
+            subsidiaries, officers, directors, employees or any related party shall have any liability to users or to
+            any third party for any indirect, incidental, special or consequential damages or any loss of revenue or
+            profits arising under or relating to these terms, the site or the offerings, even if any of said parties had
+            been advised of, knew of, or should have known of the possibility of such damages.
+          </p>
+          <p className="uppercase">
+            To the maximum extent permitted by law, our maximum aggregate liability to you for any causes whatsoever,
+            and regardless of the form of action (whether liability arises due to negligence or other tort, breach of
+            contract, violation of statute, misrepresentation or for any other reason), will at all times be limited to
+            inr one hundred (inr 100).
+          </p>
+        </div>
+        <h2>Choice of Law and Dispute Resolution</h2>
+        <p>
           These Terms shall be governed by, and construed in accordance with, the laws of India, without reference to
           principles of conflicts of law. The parties agree that the courts of Bangalore shall have exclusive
           jurisdiction over any dispute arising from or relating to these Terms, the Platform/Network or the Site. You
           expressly consent to the personal jurisdiction of said courts and waive any objection to such personal
           jurisdiction based on forums non convenience or any other basis.
         </p>
-        <div className="font-semibold mt-1 mt-8">General</div>
-        <p
-          style={{
-            font: '100% Roboto,"Segoe UI",Helvetica;',
-            color: '#261919',
-          }}
-          className="mt-8 mb-12"
-        >
+        <h2>General</h2>
+        <p>
           The parties are independent contractors and nothing in these Terms shall be deemed to create an agency or
           employment relationship, a franchisor-franchisee relationship, joint venture or partnership. These Terms
           constitute the entire agreement between you and us regarding its subject matter and supersede all prior and

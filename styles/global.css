@@ -1,3 +1,24 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+p{
+    @apply ml-1 mt-8;
+}
+
+li{
+    @apply mt-1;
+}
+
+h1{
+    @apply text-4xl;
+}
+
+h2{
+    @apply font-semibold ml-1 mt-8;
+}
+
+ul{
+    @apply list-disc ml-1 mt-8;
+}
