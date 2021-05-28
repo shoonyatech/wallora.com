@@ -17,9 +17,6 @@ module.exports = {
         'app-background': '#fff',
         orange: '#ff5a42',
       },
-      fontSize: {
-        fb: '1.188rem',
-      },
       fontFamily: {
         sans: [
           'Source Sans Pro',
