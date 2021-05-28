@@ -1,3 +1,4 @@
+import { gql, useMutation } from '@apollo/client'
 import { Box, Button, TextField } from '@material-ui/core'
 import React, { FormEvent, useState } from 'react'
 
@@ -21,16 +22,21 @@ function FeedbackPanel() {
       setValues((oldValues) => ({ ...oldValues, [name]: value }))
     }
 
-  const saveFormData = async () => {
-    const urlLink = `${process.env.WALLORA_BACKEND_SUBMIT_FEEDBACK}?firstName=${values.firstName}&lastName=${values.lastName}&email=${values.email}&feedback=${values.feedbackText}`
+  const urlLink = `?firstName=${values.firstName}&lastName=${values.lastName}&email=${values.email}&feedback=${values.feedbackText}`
 
-    const response = await fetch(urlLink, {
-      method: 'GET',
-    })
-
-    if (response.status !== 200) {
-      throw new Error(`Request failed: ${response.status}`)
+  const mutateQuery = (urlParams: string) => gql`
+    mutation FeedBack {
+      data @rest(type: "Message", path: "${urlParams}", endpoint: "feedback") {
+        success
+        message
+      }
     }
+  `
+
+  const [postFeedback, { error }] = useMutation(mutateQuery(urlLink))
+
+  if (error) {
+    throw new Error(`Request failed: ${error}`)
   }
 
   const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
@@ -42,7 +48,7 @@ function FeedbackPanel() {
     }
 
     try {
-      await saveFormData()
+      await postFeedback()
       alert('We have received your feedback. Thanks for reaching out!')
       setValues({
         firstName: '',

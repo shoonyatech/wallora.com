@@ -1,12 +1,14 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import '../styles/global.css'
 
+import { ApolloProvider } from '@apollo/client/react'
 import { UserProvider } from '@auth0/nextjs-auth0'
 import { ThemeProvider } from '@material-ui/styles'
 import { AppProps } from 'next/app'
 import { useRouter } from 'next/router'
 import React, { useEffect } from 'react'
 
+import GetApolloClient from '../apis/apollo.client'
 import * as ga from '../lib/ga'
 import MaterialUiTheme from '../styles/material.ui.theme.provider'
 
@@ -30,11 +32,13 @@ function MyApp({ Component, pageProps }: AppProps) {
   }, [router.events])
 
   return (
-    <ThemeProvider theme={MaterialUiTheme}>
-      <UserProvider>
-        <Component {...pageProps} />
-      </UserProvider>
-    </ThemeProvider>
+    <ApolloProvider client={GetApolloClient()}>
+      <ThemeProvider theme={MaterialUiTheme}>
+        <UserProvider>
+          <Component {...pageProps} />
+        </UserProvider>
+      </ThemeProvider>
+    </ApolloProvider>
   )
 }
 

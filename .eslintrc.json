@@ -29,6 +29,12 @@
         "js": "never"
       }
     ],
+    "import/no-extraneous-dependencies": [
+      "warn",
+      {
+        "peerDependencies": false
+      }
+    ],
     "@typescript-eslint/explicit-module-boundary-types": "off",
     "react/jsx-one-expression-per-line": "off",
     "react/prop-types": 0,

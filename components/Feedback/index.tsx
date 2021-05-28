@@ -14,7 +14,7 @@ function FeedBack() {
         onClick={toggleIsOn}
         onKeyPress={toggleIsOn}
         tabIndex={0}
-        className="uppercase text-white text-center text-fb bg-orange w-40 origin-left p-2 cursor-pointer h-14 -mt-8 -ml-7 -mb-56 -mr-30 shadow-fb transform -rotate-90"
+        className="uppercase text-white text-center text-xl bg-orange w-40 origin-left p-2 cursor-pointer h-14 -mt-8 -ml-7 -mb-56 -mr-30 shadow-fb transform -rotate-90"
       >
         Get in touch
       </div>
