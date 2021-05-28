@@ -3,17 +3,20 @@ import React from 'react'
 
 const Header = ({ user }: any) => (
   <AppBar position="static">
-    <div className="bg-secondary pl-10  p-5 flex justify-between">
+    <div className="bg-secondary pl-10 p-2 flex justify-between">
       <img src="./images/wallora-logo-170x53.jpeg" alt="This is Wallora logo." />
-      <span className="text-primary">This is header</span>
       {user ? (
-        <Button variant="contained" color="primary" href="/api/auth/logout">
-          LOGOUT
-        </Button>
+        <div className="m-2">
+          <Button variant="contained" color="primary" className="block" href="/api/auth/logout">
+            Sign out
+          </Button>
+        </div>
       ) : (
-        <Button variant="contained" color="primary" href="/api/auth/login">
-          LOGIN
-        </Button>
+        <div className="m-2">
+          <Button variant="contained" color="primary" className="block" href="/api/auth/login">
+            Sign in
+          </Button>
+        </div>
       )}
     </div>
   </AppBar>
