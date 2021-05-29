@@ -1,20 +1,18 @@
-// TODO: fix eslint errors - Remove below comments and fix the linting errors
-/* eslint-disable jsx-a11y/control-has-associated-label */
+/* eslint-disable jsx-a11y/anchor-is-valid */
+import Link from 'next/link'
+import React from 'react'
 
-import { AppBar } from '@material-ui/core'
-
-/* eslint-disable react/react-in-jsx-scope */
 export default function Footer() {
   return (
-    <AppBar position="sticky">
+    <footer className="bg-primary">
       <div className="pl-5 pr-5 pt-2 pb-2 flex justify-between bg-secondary">
         <span className="mt-auto mb-auto flex flex-col text-primary">
-          <a href="/terms" target="_blank">
-            Terms
-          </a>
-          <a href="/privacy" target="_blank">
-            Privacy Policy
-          </a>
+          <Link href="/terms">
+            <a target="_blank">Terms</a>
+          </Link>
+          <Link href="/privacy">
+            <a target="_blank">Privacy Policy</a>
+          </Link>
         </span>
         <span className="flex flex-row">
           <div className="bg-sprite-background bg-no-repeat" style={{ width: 60, height: 60 }} />
@@ -50,6 +48,6 @@ export default function Footer() {
           </a>
         </span>
       </div>
-    </AppBar>
+    </footer>
   )
 }
