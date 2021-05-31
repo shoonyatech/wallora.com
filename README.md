@@ -52,7 +52,7 @@ npm run dev
 
 ### To use Auth0
 
-- Use  `wallora.test@gmail.com` to login to auth0 [website](https://auth0.auth0.com/u/login/) using google. 
+- Use  `wallora.test@gmail.com` to login to auth0 [website](https://auth0.auth0.com/u/login/) using google.
 - Copy `.env.local.sample` to `.env.local` and populate the fields from the app you see in auth0 post login.
 - After this when you run the dev server and try to login you should be able to see the auth0 login flow.
 
@@ -60,18 +60,19 @@ Reference: https://auth0.com/docs/quickstart/webapp/nextjs
 
 ### To use Google Analytics
 
-- Use `wallora.test@gmail.com` to login to google analytics [website](https://analytics.google.com/) using google. 
+- Use `wallora.test@gmail.com` to login to google analytics [website](https://analytics.google.com/) using google.
 - Download two extensions [Google Analytics Debugger](https://chrome.google.com/webstore/detail/google-analytics-debugger/jnkmfdileelhofjcijamephohjechhna) and [Tag Assistant companion](https://chrome.google.com/webstore/detail/tag-assistant-companion/jmekfmbnaedfebfnmakmokmlfpblbfdm/related)
 - Populate `.env.local` `NEXT_PUBLIC_GOOGLE_ANALYTICS` variable with `Measurement Id` poperty which can be found on GA portal [here](https://analytics.google.com/analytics/web/?authuser=3#/a196586595p271760400/admin/streams/table/2605551675) (accessible post login to GA).
 - After this run the dev server and enable the Google Analytics Debugger extension, then you should be able to see your activity flowing to GA homepage.
 
 References:
+
 - https://mariestarck.com/add-google-analytics-to-your-next-js-application-in-5-easy-steps/
 
 ## To create a commit and raise a Pull Request (PR)
 
 - Save your changes and create a local commit
-- Use the following format for commit messages
+- [commitizen](https://github.com/commitizen/cz-cli) is enabled to mantain a consistent commit format
 
 ```
 doc|feat|fix|build(<page name>): <one liner of what is done in present tense>
