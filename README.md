@@ -50,9 +50,15 @@ npm install
 npm run dev
 ```
 
+- Run the storybook's explorer
+
+```
+npm run storybook
+```
+
 ### To use Auth0
 
-- Use  `wallora.test@gmail.com` to login to auth0 [website](https://auth0.auth0.com/u/login/) using google.
+- Use `wallora.test@gmail.com` to login to auth0 [website](https://auth0.auth0.com/u/login/) using google.
 - Copy `.env.local.sample` to `.env.local` and populate the fields from the app you see in auth0 post login.
 - After this when you run the dev server and try to login you should be able to see the auth0 login flow.
 
