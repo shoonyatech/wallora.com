@@ -48,7 +48,11 @@ function FeedbackPanel() {
     }
 
     try {
-      await postFeedback()
+      const data = await postFeedback()
+      if (data == null) {
+        throw new Error('Request could not be completed.')
+      }
+
       alert('We have received your feedback. Thanks for reaching out!')
       setValues({
         firstName: '',

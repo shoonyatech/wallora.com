@@ -1,4 +1,6 @@
 /* eslint-disable react/jsx-props-no-spreading */
+/* eslint-disable global-require */
+
 import '../styles/global.css'
 
 import { ApolloProvider } from '@apollo/client/react'
@@ -11,6 +13,11 @@ import React, { useEffect } from 'react'
 import GetApolloClient from '../apis/apollo.client'
 import * as ga from '../lib/ga'
 import MaterialUiTheme from '../styles/material.ui.theme.provider'
+
+// Start the mocking conditionally.
+if (process.env.NEXT_PUBLIC_API_MOCKING === 'enabled') {
+  require('../src/mocks')
+}
 
 function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter()
