@@ -25,6 +25,13 @@ const MaterialUiTheme = createMuiTheme({
         },
       },
     },
+    MuiListItem: {
+      root: {
+        '&$selected': {
+          backgroundColor: 'F4DCF4',
+        },
+      },
+    },
   },
 })
 
