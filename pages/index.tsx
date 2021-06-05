@@ -2,9 +2,9 @@ import { useUser } from '@auth0/nextjs-auth0'
 import Head from 'next/head'
 import React from 'react'
 
+import Bottom from '../components/Bottom'
 import FeedBack from '../components/Feedback'
-import Footer from '../components/Footer'
-import Header from '../components/Header'
+import Top from '../components/Top'
 
 export default function Home() {
   const { user, error, isLoading } = useUser()
@@ -15,7 +15,7 @@ export default function Home() {
 
   if (user) {
     bodyContent = (
-      <h1>
+      <h1 className="ml-8">
         Welcome to <a href="https://wallora.com">Wallora.com!</a>
         <br />
         Wallora {user.name}!
@@ -42,13 +42,13 @@ export default function Home() {
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700%26display=swap" />
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
       </Head>
-      <Header user={user} />
+      <Top user={user} />
       <main>
         <h1 className="bg-app-background h-screen pl-10 mt-2 pt-10">
           {bodyContent} <FeedBack />
         </h1>
       </main>
-      <Footer />
+      <Bottom user={user} />
     </div>
   )
 }

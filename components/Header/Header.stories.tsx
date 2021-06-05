@@ -9,4 +9,3 @@ export default {
 } as Meta
 
 export const LogIn: React.VFC<{}> = () => <Header />
-export const LogOut: React.VFC<{}> = () => <Header user />
