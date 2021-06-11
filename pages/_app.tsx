@@ -11,6 +11,7 @@ import { useRouter } from 'next/router'
 import React, { useEffect } from 'react'
 
 import GetApolloClient from '../apis/apollo.client'
+import BaseLayout from '../components/BaseLayout'
 import * as ga from '../lib/ga'
 import MaterialUiTheme from '../styles/material.ui.theme.provider'
 
@@ -19,7 +20,7 @@ if (process.env.NEXT_PUBLIC_API_MOCKING === 'enabled') {
   require('../src/mocks')
 }
 
-function MyApp({ Component, pageProps }: AppProps) {
+export default function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter()
 
   useEffect(() => {
@@ -42,11 +43,11 @@ function MyApp({ Component, pageProps }: AppProps) {
     <ApolloProvider client={GetApolloClient()}>
       <ThemeProvider theme={MaterialUiTheme}>
         <UserProvider>
-          <Component {...pageProps} />
+          <BaseLayout>
+            <Component {...pageProps} />
+          </BaseLayout>
         </UserProvider>
       </ThemeProvider>
     </ApolloProvider>
   )
 }
-
-export default MyApp

@@ -64,13 +64,15 @@ export default function MiniDrawer() {
         <IconButton onClick={toggleIsOn} color="primary" aria-label="open drawer" className="w-14 h-14">
           <MenuIcon />
         </IconButton>
-        <img src="./images/wallora-logo-170x53.jpeg" alt="This is Wallora logo." className="block" />
+        <Link href="/" passHref>
+          <img src="./images/wallora-logo-170x53.jpeg" alt="This is Wallora logo." className="block cursor-pointer" />
+        </Link>
       </div>
 
       <Divider />
 
       <List>
-        <Link href="/money" passHref>
+        <Link href="/finance" passHref>
           <ListItem button key="Manage Finances">
             <ListItemIcon>
               <InboxIcon />
