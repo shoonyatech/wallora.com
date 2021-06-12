@@ -11,7 +11,7 @@ import { useRouter } from 'next/router'
 import React, { useEffect } from 'react'
 
 import GetApolloClient from '../apis/apollo.client'
-import BaseLayout from '../components/BaseLayout'
+import BaseLayout from '../components/common/BaseLayout'
 import * as ga from '../lib/ga'
 import MaterialUiTheme from '../styles/material.ui.theme.provider'
 
@@ -20,7 +20,7 @@ if (process.env.NEXT_PUBLIC_API_MOCKING === 'enabled') {
   require('../src/mocks')
 }
 
-export default function MyApp({ Component, pageProps }: AppProps) {
+export default function WalloraApp({ Component, pageProps }: AppProps) {
   const router = useRouter()
 
   useEffect(() => {
