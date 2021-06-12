@@ -2,6 +2,8 @@ import { Button } from '@material-ui/core'
 import { createStyles, makeStyles } from '@material-ui/core/styles'
 import React from 'react'
 
+import DateHelper from '../../../lib/data-helper'
+
 function createData(date: string, value: number) {
   return { date, value }
 }
@@ -11,7 +13,6 @@ const useStyles = makeStyles(() =>
     todayHeader: {
       borderRadius: 0,
       color: 'white',
-      margin: 'auto',
       width: '10.15rem',
       background: '#255d6d',
       '&:hover': {
@@ -21,7 +22,6 @@ const useStyles = makeStyles(() =>
     dateHeader: {
       borderRadius: 0,
       color: 'white',
-      margin: 'auto',
       width: '10.15rem',
       background: '#389bb7',
       '&:hover': {
@@ -30,7 +30,6 @@ const useStyles = makeStyles(() =>
     },
     values: {
       borderRadius: 0,
-      margin: 'auto',
       width: '10.15rem',
       background: '#ffd2ad',
       '&:hover': {
@@ -40,22 +39,21 @@ const useStyles = makeStyles(() =>
   })
 )
 
-export default function FinanceDateHeader({ left, right }: any) {
+export default function FinanceDateHeader({ startDate, endDate }: any) {
   const classes = useStyles()
   const today = new Date()
   const dates = []
-  for (let i = left; i < right; i += 1) {
-    const newDate = new Date(today.getFullYear(), today.getMonth(), today.getDate() + i)
-    dates.push(createData(newDate.toDateString(), i))
+  for (let i = new Date(startDate), j = 0; i <= endDate; i.setDate(i.getDate() + 1), j += 1) {
+    dates.push(createData(i.toDateString(), j))
   }
 
   return (
-    <div className="ml-96 inline-block">
+    <div className="text-right">
       {dates.map((x) => {
         const newStyle = today.toString().includes(x.date) === true ? classes.todayHeader : classes.dateHeader
         return (
           <Button disableRipple key={x.value} size="medium" variant="contained" className={newStyle}>
-            {x.date}
+            {DateHelper.getFormattedDate(x.date)}
           </Button>
         )
       })}

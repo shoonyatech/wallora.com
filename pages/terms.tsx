@@ -1,8 +1,8 @@
 import Head from 'next/head'
 import React from 'react'
 
-import Footer from '../components/Footer/index'
-import Header from '../components/Header/index'
+import Footer from '../components/common/Footer/index'
+import Header from '../components/common/Header/index'
 
 export default function Terms() {
   return (
