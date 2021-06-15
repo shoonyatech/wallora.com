@@ -1,11 +1,12 @@
 import { Button } from '@material-ui/core'
 import { createStyles, makeStyles } from '@material-ui/core/styles'
+import { Moment } from 'moment'
 import React from 'react'
 
-import DateHelper from '../../../lib/data-helper'
+import { getDate, getDateString } from '../../../lib/date-helper'
 
-function createData(date: string, value: number) {
-  return { date, value }
+function createDate(date: Moment, value: number) {
+  return { date: getDateString(date), value }
 }
 
 const useStyles = makeStyles(() =>
@@ -40,20 +41,22 @@ const useStyles = makeStyles(() =>
 )
 
 export default function FinanceDateHeader({ startDate, endDate }: any) {
-  const classes = useStyles()
-  const today = new Date()
   const dates = []
-  for (let i = new Date(startDate), j = 0; i <= endDate; i.setDate(i.getDate() + 1), j += 1) {
-    dates.push(createData(i.toDateString(), j))
+  const classes = useStyles()
+  const todayDisplayDate = getDateString(getDate())
+
+  for (let i = startDate, j = 0; i.diff(endDate, 'days') <= 0; i.add(1, 'days')) {
+    dates.push(createDate(i, j))
+    j += 1
   }
 
   return (
     <div className="text-right">
       {dates.map((x) => {
-        const newStyle = today.toString().includes(x.date) === true ? classes.todayHeader : classes.dateHeader
+        const newStyle = todayDisplayDate === x.date ? classes.todayHeader : classes.dateHeader
         return (
           <Button disableRipple key={x.value} size="medium" variant="contained" className={newStyle}>
-            {DateHelper.getFormattedDate(x.date)}
+            {x.date}
           </Button>
         )
       })}
