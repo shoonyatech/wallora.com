@@ -3,13 +3,18 @@ import Head from 'next/head'
 import React from 'react'
 
 import Bottom from '../Bottom'
+import Loader from '../Loader'
 import Top from '../Top'
 
 function BaseLayout({ children }: any): React.ReactElement {
   const { user, isLoading, error } = useUser()
 
-  if (isLoading) return <div>Loading...</div>
-  if (error) return <div>{error.message}</div>
+  if (isLoading || error)
+    return (
+      <div>
+        <Loader open={isLoading} error={error} />
+      </div>
+    )
 
   return (
     <div className="container min-w-full grid-cols-1 grid-rows-3 h-screen">
@@ -29,7 +34,7 @@ function BaseLayout({ children }: any): React.ReactElement {
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
       </Head>
       <Top user={user} />
-      <main> {children} </main>
+      <main className="h-screen"> {children} </main>
       <Bottom user={user} />
     </div>
   )

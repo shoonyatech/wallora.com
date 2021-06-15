@@ -72,6 +72,15 @@ export default function MiniDrawer() {
       <Divider />
 
       <List>
+        <Link href="/dashboard" passHref>
+          <ListItem button key="Dashboard">
+            <ListItemIcon>
+              <InboxIcon />
+            </ListItemIcon>
+            <ListItemText primary="Dashboard" />
+          </ListItem>
+        </Link>
+
         <Link href="/finance" passHref>
           <ListItem button key="Manage Finances">
             <ListItemIcon>
