@@ -18,6 +18,10 @@ module.exports = {
         secondary: '#F4DCF4',
         'app-background': '#fff',
         orange: '#ff5a42',
+        workItem: '#f5f5dc',
+        workItemActive: '#81816d',
+        plannedIncome: 'rgba(97,255,42,.43)',
+        plannedExpense: 'rgba(255,114,114,.49)',
       },
       fontFamily: {
         sans: [
