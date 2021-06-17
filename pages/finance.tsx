@@ -2,6 +2,7 @@ import { Button, makeStyles } from '@material-ui/core'
 import React, { useState } from 'react'
 
 import BaseLayout from '../components/common/BaseLayout'
+import FinanceCategories from '../components/finance/FinanceCategories'
 import FinanceDateHeader from '../components/finance/FinanceDateHeader'
 import { dateAfterDays, dateBeforeDays, startDateAfterMonths, startDateBeforeMonths } from '../lib/date-helper'
 
@@ -25,6 +26,7 @@ function Finance() {
     <div>
       <div>
         <FinanceDateHeader startDate={values.startDate} endDate={values.endDate} />
+        <FinanceCategories />
         <div className="text-center block relative w-full bottom-0 m-4">
           <Button
             size="medium"
