@@ -34,7 +34,7 @@ function BaseLayout({ children }: any): React.ReactElement {
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
       </Head>
       <Top user={user} />
-      <main className="h-screen"> {children} </main>
+      <main className="min-h-screen"> {children} </main>
       <Bottom user={user} />
     </div>
   )
