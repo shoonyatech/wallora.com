@@ -1,14 +1,22 @@
 import { useUser } from '@auth0/nextjs-auth0'
 import Head from 'next/head'
-import React from 'react'
+import { useRouter } from 'next/router'
+import React, { useEffect } from 'react'
 
 import Bottom from '../Bottom'
 import Loader from '../Loader'
 import Top from '../Top'
 
 function BaseLayout({ children }: any): React.ReactElement {
+  const router = useRouter()
   const { user, isLoading, error } = useUser()
 
+  useEffect(() => {
+    const protectedUrls = ['/finance', '/dashboard']
+    if (!user && protectedUrls.includes(router.pathname)) {
+      router.push('/api/auth/login')
+    }
+  }, [router, user])
   if (isLoading || error)
     return (
       <div>
