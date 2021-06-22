@@ -4,6 +4,7 @@ import React from 'react'
 import BaseLayout from '../components/common/BaseLayout'
 import Loader from '../components/common/Loader'
 import PlannedExpensesChart from '../components/dashboard/PlannedExpensesChart'
+import UserSettings from '../components/dashboard/UserSettings'
 import ClientSideRendering from '../lib/client-side-rendering'
 
 function DashBoard() {
@@ -18,6 +19,7 @@ function DashBoard() {
 
   return (
     <ClientSideRendering>
+      <UserSettings />
       <div className="ml-8">{user ? <PlannedExpensesChart /> : null}</div>
     </ClientSideRendering>
   )
