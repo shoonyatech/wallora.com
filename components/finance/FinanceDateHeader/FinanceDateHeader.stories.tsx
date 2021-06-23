@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { dateAfterDays, dateBeforeDays } from '../../../lib/date-helper'
+import { dateAfterDaysFromToday, dateBeforeDaysFromToday } from '../../../lib/date-helper'
 import FinanceDateHeader from '.'
 
 export default {
@@ -8,6 +8,6 @@ export default {
   component: FinanceDateHeader,
 }
 
-const Template = () => <FinanceDateHeader startDate={dateBeforeDays(3)} endDate={dateAfterDays(3)} />
+const Template = () => <FinanceDateHeader startDate={dateBeforeDaysFromToday(3)} endDate={dateAfterDaysFromToday(3)} />
 
 export const Default = Template.bind({})
