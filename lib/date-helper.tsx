@@ -21,16 +21,15 @@ export function getFormattedDate(date: string)
     return Moment(date).format('DD MMM YYYY')
 }
 
-export function dateBeforeDays(days: number)
+export function dateBeforeDays(days: number, date: Moment.Moment = Moment())
 {
-    return Moment().subtract(days, 'days')
+    return date.subtract(days, 'days')   
 }
 
-export function dateAfterDays(days: number)
+export function dateAfterDays(days: number, date: Moment.Moment = Moment())
 {
-    return Moment().add(days, 'days')
+    return  date.add(days, 'days')
 }
-
 
 export function dateBeforeMonths(months: number)
 {
@@ -40,4 +39,14 @@ export function dateBeforeMonths(months: number)
 export function dateAfterMonths(months: number)
 {
     return Moment().add(months, 'months')
+}
+
+export function startDateBeforeMonths(date: Moment.Moment, months: number)
+{
+    return date.endOf('month').add(1, "days")
+}
+
+export function startDateAfterMonths(date: Moment.Moment, months: number)
+{
+    return date.startOf('month').subtract(1, "months")
 }

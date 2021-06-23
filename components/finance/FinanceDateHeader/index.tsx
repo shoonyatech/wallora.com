@@ -45,7 +45,7 @@ export default function FinanceDateHeader({ startDate, endDate }: any) {
   const classes = useStyles()
   const todayDisplayDate = getDateString(getDate())
 
-  for (let i = startDate, j = 0; i.diff(endDate, 'days') <= 0; i.add(1, 'days')) {
+  for (let i = startDate.clone(), j = 0; i.diff(endDate, 'days') <= 0; i.add(1, 'days')) {
     dates.push(createDate(i, j))
     j += 1
   }
@@ -55,14 +55,14 @@ export default function FinanceDateHeader({ startDate, endDate }: any) {
       {dates.map((x) => {
         const newStyle = todayDisplayDate === x.date ? classes.todayHeader : classes.dateHeader
         return (
-          <Button disableRipple key={x.value} size="medium" variant="contained" className={newStyle}>
+          <Button disableRipple key={x.value} size="small" variant="contained" className={newStyle}>
             {x.date}
           </Button>
         )
       })}
       <br />
       {dates.map((x) => (
-        <Button disableRipple key={x.value} size="medium" variant="contained" className={classes.values}>
+        <Button disableRipple key={x.value} size="small" variant="contained" className={classes.values}>
           {x.value}
         </Button>
       ))}
