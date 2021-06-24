@@ -16,9 +16,9 @@ import * as ga from '../lib/ga'
 import MaterialUiTheme from '../styles/material.ui.theme.provider'
 
 // Start the mocking conditionally.
-// if (process.env.NEXT_PUBLIC_API_MOCKING === 'enabled') {
-//   require('../src/mocks')
-// }
+if (process.env.NEXT_PUBLIC_API_MOCKING === 'enabled') {
+  require('../src/mocks')
+}
 
 export default function WalloraApp({ Component, pageProps }: AppProps) {
   const router = useRouter()
