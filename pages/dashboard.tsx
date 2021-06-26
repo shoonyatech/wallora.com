@@ -1,33 +1,18 @@
-import { useUser } from '@auth0/nextjs-auth0'
 import React from 'react'
 
 import BaseLayout from '../components/common/BaseLayout'
-import Loader from '../components/common/Loader'
 import PlannedExpensesChart from '../components/dashboard/PlannedExpensesChart'
 import PredictedSavingsChart from '../components/dashboard/PredictedSavingsChart'
 import UserSettings from '../components/dashboard/UserSettings'
 import ClientSideRendering from '../lib/client-side-rendering'
 
 function DashBoard() {
-  const { user, error, isLoading } = useUser()
-
-  if (isLoading || error)
-    return (
-      <div>
-        <Loader open={isLoading} error={error} />
-      </div>
-    )
-
   return (
     <ClientSideRendering>
       <UserSettings />
       <div className="ml-8">
-        {user ? (
-          <>
-            <PredictedSavingsChart />
-            <PlannedExpensesChart />
-          </>
-        ) : null}
+        <PredictedSavingsChart />
+        <PlannedExpensesChart />
       </div>
     </ClientSideRendering>
   )
