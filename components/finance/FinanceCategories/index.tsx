@@ -1,10 +1,18 @@
+/* eslint-disable jsx-a11y/mouse-events-have-key-events */
 import { gql, useQuery } from '@apollo/client'
 import React from 'react'
 
 import Loader from '../../common/Loader'
 import FinanceCategoryListItem from '../FinanceCategoryListItem'
+import FinanceSpreadSheet from '../FinanceSpreadSheet'
 
-const FinanceCategories = () => {
+type financeCategoriesProps = {
+  columns: number
+  activeCell: number[]
+  getActiveCell: any
+}
+
+const FinanceCategories = ({ columns, activeCell, getActiveCell }: financeCategoriesProps) => {
   const getCategories = () => gql`
     query User {
       user {
@@ -28,15 +36,23 @@ const FinanceCategories = () => {
         <Loader open={loading} error={error} />
       </div>
     )
-
+  const [activeRow, activeColumn] = activeCell
   const { workItems } = data.user.userSettings
   return (
-    <div className="flex flex-col w-96 mt-0">
+    <div className="flex flex-col mt-0">
       <div className="">Income/Expense</div>
       <ul className="flex flex-col mt-0">
-        {workItems.map((item: any) => (
+        {workItems.map((item: any, rowIndex: any) => (
           <li key={item.name} className="flex mt-px">
-            <FinanceCategoryListItem item={item} />
+            <div className="w-96 flex" onMouseOver={() => getActiveCell([rowIndex, activeColumn])}>
+              <FinanceCategoryListItem item={item} activeRow={activeRow} rowIndex={rowIndex} />
+            </div>
+            <FinanceSpreadSheet
+              columns={columns}
+              rowIndex={rowIndex}
+              activeCell={activeCell}
+              getActiveCell={getActiveCell}
+            />
           </li>
         ))}
       </ul>
