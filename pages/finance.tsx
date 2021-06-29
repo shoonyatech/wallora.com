@@ -21,12 +21,18 @@ function Finance() {
     startDate: dateBeforeDays(3),
     endDate: dateAfterDays(4),
   })
+  const [activeCell, setActiveCell] = useState([0, 0])
+  function getActiveCell(cell: any) {
+    setActiveCell(cell)
+  }
 
   return (
     <div>
       <div>
         <FinanceDateHeader startDate={values.startDate} endDate={values.endDate} />
-        <FinanceCategories />
+        <div className="flex">
+          <FinanceCategories columns={values.dateHeaderCount} activeCell={activeCell} getActiveCell={getActiveCell} />
+        </div>
         <div className="text-center block relative w-full bottom-0 m-4">
           <Button
             size="medium"
