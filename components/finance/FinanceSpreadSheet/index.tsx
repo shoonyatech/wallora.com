@@ -1,6 +1,8 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React from 'react'
 
-const FinanceSpreadSheet = ({ columns, rowIndex, activeCell, getActiveCell }: any) => {
+const FinanceSpreadSheet = ({ columns, rowIndex, activeCell, setActiveCell, setShowPanel }: any) => {
   const isEqual = (a: any, b: any): Boolean => a <= b && a >= b
   const [activeRow, activeColumn] = activeCell
   return (
@@ -21,7 +23,8 @@ const FinanceSpreadSheet = ({ columns, rowIndex, activeCell, getActiveCell }: an
           // eslint-disable-next-line jsx-a11y/mouse-events-have-key-events
           <div
             className={`w-40 p-5 border-box border-solid ${borderStyles} `}
-            onMouseOver={() => getActiveCell(cellIndex)}
+            onMouseOver={() => setActiveCell(cellIndex)}
+            onClick={() => setShowPanel(true)}
           />
         )
       })}

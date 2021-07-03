@@ -9,10 +9,11 @@ import FinanceSpreadSheet from '../FinanceSpreadSheet'
 type financeCategoriesProps = {
   columns: number
   activeCell: number[]
-  getActiveCell: any
+  setActiveCell: any
+  setShowPanel: any
 }
 
-const FinanceCategories = ({ columns, activeCell, getActiveCell }: financeCategoriesProps) => {
+const FinanceCategories = ({ columns, activeCell, setActiveCell, setShowPanel }: financeCategoriesProps) => {
   const getCategories = () => gql`
     query User {
       user {
@@ -44,14 +45,15 @@ const FinanceCategories = ({ columns, activeCell, getActiveCell }: financeCatego
       <ul className="flex flex-col mt-0">
         {workItems.map((item: any, rowIndex: any) => (
           <li key={item.name} className="flex mt-px">
-            <div className="w-96 flex" onMouseOver={() => getActiveCell([rowIndex, activeColumn])}>
+            <div className="w-96 flex" onMouseOver={() => setActiveCell([rowIndex, activeColumn])}>
               <FinanceCategoryListItem item={item} activeRow={activeRow} rowIndex={rowIndex} />
             </div>
             <FinanceSpreadSheet
               columns={columns}
               rowIndex={rowIndex}
               activeCell={activeCell}
-              getActiveCell={getActiveCell}
+              setActiveCell={setActiveCell}
+              setShowPanel={setShowPanel}
             />
           </li>
         ))}
