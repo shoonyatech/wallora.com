@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 import BaseLayout from '../components/common/BaseLayout'
 import FinanceCategories from '../components/finance/FinanceCategories'
 import FinanceDateHeader from '../components/finance/FinanceDateHeader'
+import FinancePanel from '../components/finance/FinancePanel'
 import { dateAfterDays, dateBeforeDays, startDateAfterMonths, startDateBeforeMonths } from '../lib/date-helper'
 
 const useStyles = makeStyles({
@@ -22,18 +23,22 @@ function Finance() {
     endDate: dateAfterDays(4),
   })
   const [activeCell, setActiveCell] = useState([0, 0])
-  function getActiveCell(cell: any) {
-    setActiveCell(cell)
-  }
+  const [showPanel, setShowPanel] = useState(false)
 
   return (
     <div>
       <div>
         <FinanceDateHeader startDate={values.startDate} endDate={values.endDate} />
         <div className="flex">
-          <FinanceCategories columns={values.dateHeaderCount} activeCell={activeCell} getActiveCell={getActiveCell} />
+          <FinanceCategories
+            columns={values.dateHeaderCount}
+            activeCell={activeCell}
+            setShowPanel={setShowPanel}
+            setActiveCell={(cell: any) => setActiveCell(cell)}
+          />
         </div>
-        <div className="text-center block relative w-full bottom-0 m-4">
+        <div className="text-center block w-full bottom-0 m-4">
+          {showPanel && <FinancePanel setShowPanel={setShowPanel} />}
           <Button
             size="medium"
             type="submit"
