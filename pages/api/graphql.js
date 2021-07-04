@@ -2,7 +2,7 @@ import { getSession } from '@auth0/nextjs-auth0'
 import axios from 'axios'
 
 export default async (req, res) => {
-  const url = `http://localhost:4000`
+  const url = process.env.GRAPHQL_SERVER
   const session = await getSession(req, res)
 
   await axios
