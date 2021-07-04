@@ -3,7 +3,7 @@
 
 import '../styles/global.css'
 
-import { ApolloProvider } from '@apollo/client/react'
+import { ApolloProvider } from '@apollo/client'
 import { UserProvider } from '@auth0/nextjs-auth0'
 import { ThemeProvider } from '@material-ui/styles'
 import { AppProps } from 'next/app'
