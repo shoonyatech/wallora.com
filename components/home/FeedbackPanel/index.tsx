@@ -1,3 +1,4 @@
+/* eslint-disable no-alert */
 import { gql, useMutation } from '@apollo/client'
 import { Box, Button, TextField } from '@material-ui/core'
 import React, { FormEvent, useState } from 'react'
