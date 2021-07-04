@@ -1,6 +1,6 @@
 /* eslint-disable import/prefer-default-export */
 
-import { rest } from 'msw'
+import { graphql, rest } from 'msw'
 
 export const handlers = [
   rest.get(`${process.env.WALLORA_BACKEND_SUBMIT_FEEDBACK}`, (req, res, ctx) =>
@@ -131,6 +131,18 @@ export const handlers = [
             amount: 0,
           },
         ],
+      })
+    )
+  ),
+  graphql.query('User', (req, res, ctx) =>
+    res(
+      ctx.data({
+        user: {
+          userSettings: {
+            currency: 'Mock Currency',
+            accountId: 'Mock Id',
+          },
+        },
       })
     )
   ),
