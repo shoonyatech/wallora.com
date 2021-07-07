@@ -17,10 +17,14 @@ const useStyles = makeStyles({
 
 function Finance() {
   const classes = useStyles()
+  const marginLeft = 384
+  const spreadSheetWidth = window.innerWidth - marginLeft
+  const cellWidth = 162.4
+  const dateColumns = Math.ceil(spreadSheetWidth / cellWidth)
+
   const [values, setValues] = useState({
-    dateHeaderCount: 8,
-    startDate: dateBeforeDays(3),
-    endDate: dateAfterDays(3),
+    startDate: dateBeforeDays(Math.floor(dateColumns / 2)),
+    endDate: dateAfterDays(Math.ceil(dateColumns / 2 - 1)),
   })
   const [activeCell, setActiveCell] = useState([0, 0])
   const [showPanel, setShowPanel] = useState(true)
@@ -28,10 +32,13 @@ function Finance() {
   return (
     <div>
       <div>
-        <FinanceDateHeader startDate={values.startDate} endDate={values.endDate} />
+        <div className="grid grid-cols-financeHeader">
+          <div />
+          <FinanceDateHeader startDate={values.startDate} endDate={values.endDate} />
+        </div>
         <div className="flex">
           <FinanceCategories
-            columns={values.dateHeaderCount}
+            columns={dateColumns}
             activeCell={activeCell}
             setShowPanel={setShowPanel}
             setActiveCell={(cell: any) => setActiveCell(cell)}
@@ -47,9 +54,8 @@ function Finance() {
             className={classes.button}
             onClick={() =>
               setValues({
-                dateHeaderCount: values.dateHeaderCount,
                 startDate: startDateAfterMonths(values.startDate, 1),
-                endDate: dateAfterDays(values.dateHeaderCount, startDateAfterMonths(values.endDate, 1)),
+                endDate: dateAfterDays(dateColumns, startDateAfterMonths(values.endDate, 1)),
               })
             }
           >
@@ -63,7 +69,6 @@ function Finance() {
             className={classes.button}
             onClick={() =>
               setValues({
-                dateHeaderCount: values.dateHeaderCount,
                 startDate: dateBeforeDays(1, values.startDate),
                 endDate: dateBeforeDays(1, values.endDate),
               })
@@ -79,9 +84,8 @@ function Finance() {
             className={classes.button}
             onClick={() =>
               setValues({
-                dateHeaderCount: values.dateHeaderCount,
-                startDate: dateBeforeDays(values.dateHeaderCount / 2 - 1),
-                endDate: dateAfterDays(values.dateHeaderCount / 2 + 1),
+                startDate: dateBeforeDays(dateColumns / 2 - 1),
+                endDate: dateAfterDays(dateColumns / 2 + 1),
               })
             }
           >
@@ -95,7 +99,6 @@ function Finance() {
             className={classes.button}
             onClick={() =>
               setValues({
-                dateHeaderCount: values.dateHeaderCount,
                 startDate: dateAfterDays(1, values.startDate),
                 endDate: dateAfterDays(1, values.endDate),
               })
@@ -111,9 +114,8 @@ function Finance() {
             className={classes.button}
             onClick={() =>
               setValues({
-                dateHeaderCount: values.dateHeaderCount,
                 startDate: startDateBeforeMonths(values.startDate, -1),
-                endDate: dateAfterDays(values.dateHeaderCount, startDateBeforeMonths(values.endDate, -1)),
+                endDate: dateAfterDays(dateColumns, startDateBeforeMonths(values.endDate, -1)),
               })
             }
           >

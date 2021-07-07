@@ -42,7 +42,7 @@ const FinanceCategories = ({ columns, activeCell, setActiveCell, setShowPanel }:
   return (
     <div className="flex flex-col mt-0">
       <div className="">Income/Expense</div>
-      <ul className="flex flex-col mt-0">
+      <ul className="flex flex-col mt-0 ml-0">
         {workItems.map((item: any, rowIndex: any) => (
           <li key={item.name} className="flex mt-px">
             <div className="w-96 flex" onMouseOver={() => setActiveCell([rowIndex, activeColumn])}>

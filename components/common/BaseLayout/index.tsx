@@ -25,7 +25,7 @@ function BaseLayout({ children }: any): React.ReactElement {
     )
 
   return (
-    <div className="container min-w-full grid-cols-1 grid-rows-3 h-screen">
+    <div className="container min-w-full grid-cols-1 grid-rows-3 overflow-x-hidden">
       <Head>
         <title>Wallora</title>
         <link rel="icon" href="assets/favicon.ico" />
