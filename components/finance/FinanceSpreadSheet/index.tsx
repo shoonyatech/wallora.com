@@ -22,7 +22,7 @@ const FinanceSpreadSheet = ({ columns, rowIndex, activeCell, setActiveCell, setS
         return (
           // eslint-disable-next-line jsx-a11y/mouse-events-have-key-events
           <div
-            className={`w-40 p-5 border-box border-solid ${borderStyles} `}
+            className={`w-[10.15rem] p-5 border-box border-solid ${borderStyles} `}
             onMouseOver={() => setActiveCell(cellIndex)}
             onClick={() => setShowPanel(true)}
           />

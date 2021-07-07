@@ -51,21 +51,20 @@ export default function FinanceDateHeader({ startDate, endDate }: any) {
   }
 
   return (
-    <div className="text-right">
+    <div className="flex">
       {dates.map((x) => {
         const newStyle = todayDisplayDate === x.date ? classes.todayHeader : classes.dateHeader
         return (
-          <Button disableRipple key={x.value} size="small" variant="contained" className={newStyle}>
-            {x.date}
-          </Button>
+          <div className="flex flex-col">
+            <Button disableRipple key={x.value} size="small" variant="contained" className={newStyle}>
+              {x.date}
+            </Button>
+            <Button disableRipple key={x.value} size="small" variant="contained" className={classes.values}>
+              {x.value}
+            </Button>
+          </div>
         )
       })}
-      <br />
-      {dates.map((x) => (
-        <Button disableRipple key={x.value} size="small" variant="contained" className={classes.values}>
-          {x.value}
-        </Button>
-      ))}
     </div>
   )
 }
