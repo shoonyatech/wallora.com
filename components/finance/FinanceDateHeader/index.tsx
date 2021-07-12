@@ -14,7 +14,7 @@ const useStyles = makeStyles(() =>
     todayHeader: {
       borderRadius: 0,
       color: 'white',
-      width: '10.15rem',
+      width: '10rem',
       background: '#255d6d',
       '&:hover': {
         background: '#255d6d',
@@ -23,7 +23,7 @@ const useStyles = makeStyles(() =>
     dateHeader: {
       borderRadius: 0,
       color: 'white',
-      width: '10.15rem',
+      width: '10rem',
       background: '#389bb7',
       '&:hover': {
         background: '#389bb7',
@@ -31,7 +31,7 @@ const useStyles = makeStyles(() =>
     },
     values: {
       borderRadius: 0,
-      width: '10.15rem',
+      width: '10rem',
       background: '#ffd2ad',
       '&:hover': {
         background: '#ffd2ad',
@@ -55,11 +55,11 @@ export default function FinanceDateHeader({ startDate, endDate }: any) {
       {dates.map((x) => {
         const newStyle = todayDisplayDate === x.date ? classes.todayHeader : classes.dateHeader
         return (
-          <div className="flex flex-col">
-            <Button disableRipple key={x.value} size="small" variant="contained" className={newStyle}>
+          <div key={x.value} className="flex flex-col">
+            <Button disableRipple size="small" variant="contained" className={newStyle}>
               {x.date}
             </Button>
-            <Button disableRipple key={x.value} size="small" variant="contained" className={classes.values}>
+            <Button disableRipple size="small" variant="contained" className={classes.values}>
               {x.value}
             </Button>
           </div>

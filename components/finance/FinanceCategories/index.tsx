@@ -1,8 +1,10 @@
 /* eslint-disable jsx-a11y/mouse-events-have-key-events */
 import { gql, useQuery } from '@apollo/client'
-import React from 'react'
+import React, { useState } from 'react'
+import { useToggle } from 'react-use'
 
 import Loader from '../../common/Loader'
+import ExpensePanelDetails from '../ExpensePanelDetails'
 import FinanceCategoryListItem from '../FinanceCategoryListItem'
 import FinanceSpreadSheet from '../FinanceSpreadSheet'
 
@@ -10,27 +12,42 @@ type financeCategoriesProps = {
   columns: number
   activeCell: number[]
   setActiveCell: any
-  setShowPanel: any
 }
 
-const FinanceCategories = ({ columns, activeCell, setActiveCell, setShowPanel }: financeCategoriesProps) => {
+const FinanceCategories = ({ columns, activeCell, setActiveCell }: financeCategoriesProps) => {
   const getCategories = () => gql`
-    query User {
-      user {
-        userSettings {
-          workItems {
-            name
-            incomeOrExpense
-            totalAmount {
-              type
-              amount
-            }
-          }
+    query Finance {
+      finance {
+        workItems {
+          name
+          incomeOrExpense
+          order
+          id
         }
       }
     }
   `
+  const leftMargin = 384
+  const topMargin = 138
+  const [panelPosition, setPanelPosition] = useState({
+    top: `${topMargin}px`,
+    left: `${leftMargin}px`,
+  })
+  const [isOn, toggleIsOn] = useToggle(false)
   const { loading, error, data } = useQuery(getCategories())
+  const defaultCurrency = '$'
+  const currencyList = ['INR', '$', 'YUH']
+  const [totalValues, setTotalValues] = useState({
+    rows: [
+      {
+        currency: defaultCurrency,
+        amount: 0,
+        comment: '',
+        tags: '',
+        person: '',
+      },
+    ],
+  })
   if (loading || error)
     return (
       <div>
@@ -38,13 +55,24 @@ const FinanceCategories = ({ columns, activeCell, setActiveCell, setShowPanel }:
       </div>
     )
   const [activeRow, activeColumn] = activeCell
-  const { workItems } = data.user.userSettings
+  const { workItems } = data.finance
+
+  const panelSize = 880
+
+  const togglePanel = (row: any, col: any) => {
+    toggleIsOn()
+    setPanelPosition({
+      top: `${topMargin + row * 49}px`,
+      left: `${leftMargin + Math.min(((columns - 1) * 160) % panelSize, col * 160)}px`,
+    })
+  }
+
   return (
     <div className="flex flex-col mt-0">
-      <div className="">Income/Expense</div>
+      <div className="h-6">Income/Expense</div>
       <ul className="flex flex-col mt-0 ml-0">
         {workItems.map((item: any, rowIndex: any) => (
-          <li key={item.name} className="flex mt-px">
+          <li key={item.id} className="h-12 flex mt-px">
             <div className="w-96 flex" onMouseOver={() => setActiveCell([rowIndex, activeColumn])}>
               <FinanceCategoryListItem item={item} activeRow={activeRow} rowIndex={rowIndex} />
             </div>
@@ -53,11 +81,23 @@ const FinanceCategories = ({ columns, activeCell, setActiveCell, setShowPanel }:
               rowIndex={rowIndex}
               activeCell={activeCell}
               setActiveCell={setActiveCell}
-              setShowPanel={setShowPanel}
+              togglePanel={togglePanel}
             />
           </li>
         ))}
       </ul>
+      {isOn ? (
+        <div>
+          <ExpensePanelDetails
+            toggleIsOn={toggleIsOn}
+            totalValues={totalValues}
+            setTotalValues={setTotalValues}
+            currencyList={currencyList}
+            defaultCurrency={defaultCurrency}
+            panelPosition={panelPosition}
+          />
+        </div>
+      ) : null}
     </div>
   )
 }
