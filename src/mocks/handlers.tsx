@@ -146,4 +146,97 @@ export const handlers = [
       })
     )
   ),
+  graphql.query('Tags', (req, res, ctx) =>
+    res(
+      ctx.data({
+        user: {
+          userSettings: {
+            taxes: [
+              {
+                type: 'Income Tax'
+              },
+              {
+                type: 'Professional Tax'
+              },
+              {
+                type: 'Provident Fund'
+              }
+            ],
+            emis: [
+              {
+                type: 'Home loan'
+              },
+              {
+                type: 'Car loan'
+              }
+            ],
+            bills: [
+              {
+                type: 'Phone bill'
+              },
+              {
+                type: 'Internet bill'
+              },
+              {
+                type: 'Electricity bill'
+              }
+            ],
+            commutes: [
+              {
+                type: 'Car'
+              },
+              {
+                type: 'Public transport'
+              }
+            ],
+            households: [
+              {
+                type: 'Domestic help'
+              },
+              {
+                type: 'Household items'
+              }
+            ],
+            entertainments: [
+              {
+                type: 'Movies'
+              },
+              {
+                type: 'Sports'
+              }
+            ],
+            hobbies: [
+              {
+                type: 'Gym'
+              },
+              {
+                type: 'Sports'
+              }
+            ],
+            community: [
+              {
+                type: 'Club Membership'
+              },
+              {
+                type: 'Charity'
+              }
+            ],
+            grooming: [
+              {
+                type: 'Saloon'
+              },
+              {
+                type: 'Shopping'
+              }
+            ],
+            profession: [
+              {
+                type: 'Office expenses'
+              }
+            ]
+          },
+        },
+      })
+    )
+  ),
 ]
