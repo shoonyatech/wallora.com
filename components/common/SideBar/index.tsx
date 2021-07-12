@@ -47,87 +47,89 @@ export default function MiniDrawer() {
   const [open, toggleIsOn] = useToggle(false)
 
   return (
-    <Drawer
-      variant="permanent"
-      className={clsx(classes.drawer, {
-        [classes.drawerOpen]: open,
-        [classes.drawerClose]: !open,
-      })}
-      classes={{
-        paper: clsx({
+    <div className="hidden">
+      <Drawer
+        variant="permanent"
+        className={clsx(classes.drawer, {
           [classes.drawerOpen]: open,
           [classes.drawerClose]: !open,
-        }),
-      }}
-    >
-      <div className="pl-0 pr-0 flex">
-        <IconButton onClick={toggleIsOn} color="primary" aria-label="open drawer" className="w-14 h-14">
-          <MenuIcon />
-        </IconButton>
-        <Link href="/" passHref>
-          <img src="./images/wallora-logo-170x53.jpeg" alt="This is Wallora logo." className="block cursor-pointer" />
-        </Link>
-      </div>
+        })}
+        classes={{
+          paper: clsx({
+            [classes.drawerOpen]: open,
+            [classes.drawerClose]: !open,
+          }),
+        }}
+      >
+        <div className="pl-0 pr-0 flex">
+          <IconButton onClick={toggleIsOn} color="primary" aria-label="open drawer" className="w-14 h-14">
+            <MenuIcon />
+          </IconButton>
+          <Link href="/" passHref>
+            <img src="./images/wallora-logo-170x53.jpeg" alt="This is Wallora logo." className="block cursor-pointer" />
+          </Link>
+        </div>
 
-      <Divider />
-
-      <List>
-        <Link href="/dashboard" passHref>
-          <ListItem button key="Dashboard">
-            <ListItemIcon>
-              <InboxIcon />
-            </ListItemIcon>
-            <ListItemText primary="Dashboard" />
-          </ListItem>
-        </Link>
-
-        <Link href="/finance" passHref>
-          <ListItem button key="Manage Finances">
-            <ListItemIcon>
-              <InboxIcon />
-            </ListItemIcon>
-            <ListItemText primary="Manage Finances" />
-          </ListItem>
-        </Link>
-
-        <Link href="/contacts" passHref>
-          <ListItem button key="Manage Contacts">
-            <ListItemIcon>
-              <InboxIcon />
-            </ListItemIcon>
-            <ListItemText primary="Manage Contacts" />
-          </ListItem>
-        </Link>
-
-        <Link href="/analysis" passHref>
-          <ListItem button key="View Reports">
-            <ListItemIcon>
-              <InboxIcon />
-            </ListItemIcon>
-            <ListItemText primary="View Reports" />
-          </ListItem>
-        </Link>
-      </List>
-      <List style={{ marginTop: `auto` }}>
         <Divider />
 
-        <Link href="/settings" passHref>
-          <ListItem button key="User Settings">
-            <ListItemIcon>
-              <InboxIcon />
-            </ListItemIcon>
-            <ListItemText primary="User Settings" />
-          </ListItem>
-        </Link>
-        <Link href="/api/auth/logout" passHref>
-          <ListItem button key="Sign out">
-            <ListItemIcon>
-              <ExitToAppSharpIcon />
-            </ListItemIcon>
-            <ListItemText primary="Sign out" />
-          </ListItem>
-        </Link>
-      </List>
-    </Drawer>
+        <List>
+          <Link href="/dashboard" passHref>
+            <ListItem button key="Dashboard">
+              <ListItemIcon>
+                <InboxIcon />
+              </ListItemIcon>
+              <ListItemText primary="Dashboard" />
+            </ListItem>
+          </Link>
+
+          <Link href="/finance" passHref>
+            <ListItem button key="Manage Finances">
+              <ListItemIcon>
+                <InboxIcon />
+              </ListItemIcon>
+              <ListItemText primary="Manage Finances" />
+            </ListItem>
+          </Link>
+
+          <Link href="/contacts" passHref>
+            <ListItem button key="Manage Contacts">
+              <ListItemIcon>
+                <InboxIcon />
+              </ListItemIcon>
+              <ListItemText primary="Manage Contacts" />
+            </ListItem>
+          </Link>
+
+          <Link href="/analysis" passHref>
+            <ListItem button key="View Reports">
+              <ListItemIcon>
+                <InboxIcon />
+              </ListItemIcon>
+              <ListItemText primary="View Reports" />
+            </ListItem>
+          </Link>
+        </List>
+        <List style={{ marginTop: `auto` }}>
+          <Divider />
+
+          <Link href="/settings" passHref>
+            <ListItem button key="User Settings">
+              <ListItemIcon>
+                <InboxIcon />
+              </ListItemIcon>
+              <ListItemText primary="User Settings" />
+            </ListItem>
+          </Link>
+          <Link href="/api/auth/logout" passHref>
+            <ListItem button key="Sign out">
+              <ListItemIcon>
+                <ExitToAppSharpIcon />
+              </ListItemIcon>
+              <ListItemText primary="Sign out" />
+            </ListItem>
+          </Link>
+        </List>
+      </Drawer>
+    </div>
   )
 }

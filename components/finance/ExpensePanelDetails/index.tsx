@@ -23,6 +23,7 @@ export default function ExpensePanelDetails({
   updateAmountSum,
   currencyList,
   defaultCurrency,
+  panelPosition,
 }: any) {
   const classes = useStyles()
   const handleTotalValues = (valuen: any) => () => {
@@ -84,7 +85,7 @@ export default function ExpensePanelDetails({
   }
 
   return (
-    <div className="rounded">
+    <div className="rounded absolute z-10" style={{ left: panelPosition.left, top: panelPosition.top }}>
       <div className="bg-secondary inline-block rounded">
         <ExpensePanelRows
           totalValues={totalValues}

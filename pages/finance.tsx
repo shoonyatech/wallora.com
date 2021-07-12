@@ -4,7 +4,6 @@ import React, { useState } from 'react'
 import BaseLayout from '../components/common/BaseLayout'
 import FinanceCategories from '../components/finance/FinanceCategories'
 import FinanceDateHeader from '../components/finance/FinanceDateHeader'
-import IncomeExpenseBrick from '../components/finance/IncomeExpenseBrick'
 import { dateAfterDays, dateBeforeDays, startDateAfterMonths, startDateBeforeMonths } from '../lib/date-helper'
 
 const useStyles = makeStyles({
@@ -19,7 +18,7 @@ function Finance() {
   const classes = useStyles()
   const marginLeft = 384
   const spreadSheetWidth = window.innerWidth - marginLeft
-  const cellWidth = 162.4
+  const cellWidth = 160
   const dateColumns = Math.ceil(spreadSheetWidth / cellWidth)
 
   const [values, setValues] = useState({
@@ -27,12 +26,11 @@ function Finance() {
     endDate: dateAfterDays(Math.ceil(dateColumns / 2 - 1)),
   })
   const [activeCell, setActiveCell] = useState([0, 0])
-  const [showPanel, setShowPanel] = useState(true)
 
   return (
     <div>
       <div>
-        <div className="grid grid-cols-financeHeader">
+        <div className="grid grid-cols-financeHeader h-16">
           <div />
           <FinanceDateHeader startDate={values.startDate} endDate={values.endDate} />
         </div>
@@ -40,11 +38,9 @@ function Finance() {
           <FinanceCategories
             columns={dateColumns}
             activeCell={activeCell}
-            setShowPanel={setShowPanel}
             setActiveCell={(cell: any) => setActiveCell(cell)}
           />
         </div>
-        {showPanel && <IncomeExpenseBrick />}
         <div className="text-center block w-full bottom-0 m-4">
           <Button
             size="medium"

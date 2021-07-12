@@ -2,9 +2,10 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React from 'react'
 
-const FinanceSpreadSheet = ({ columns, rowIndex, activeCell, setActiveCell, setShowPanel }: any) => {
+const FinanceSpreadSheet = ({ columns, rowIndex, activeCell, setActiveCell, togglePanel }: any) => {
   const isEqual = (a: any, b: any): Boolean => a <= b && a >= b
   const [activeRow, activeColumn] = activeCell
+
   return (
     <>
       {Array.from({ length: columns }, (_, columnIndex) => {
@@ -18,13 +19,13 @@ const FinanceSpreadSheet = ({ columns, rowIndex, activeCell, setActiveCell, setS
         } else if (isEqual(columnIndex, activeColumn)) {
           borderStyles = 'border-l-2 border-r-2'
         }
-
         return (
           // eslint-disable-next-line jsx-a11y/mouse-events-have-key-events
           <div
-            className={`w-[10.15rem] p-5 border-box border-solid ${borderStyles} `}
+            key={`${rowIndex}${columnIndex}`}
+            className={`w-40 p-5 border-box border-solid ${borderStyles} `}
             onMouseOver={() => setActiveCell(cellIndex)}
-            onClick={() => setShowPanel(true)}
+            onClick={() => togglePanel(rowIndex, columnIndex)}
           />
         )
       })}

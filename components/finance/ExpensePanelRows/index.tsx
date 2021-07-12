@@ -36,7 +36,7 @@ export default function ExpensePanelRows({
 }: any) {
   const classes = useStyles()
   return (
-    <div>
+    <div className="flex">
       {totalValues.rows.map((item: any, idx: any) => (
         <div id={idx} key={idx.toString()}>
           <FormControl variant="outlined">
