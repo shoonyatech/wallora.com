@@ -1,6 +1,6 @@
 import React from 'react'
 
-function FinanceCategoryListItem({ item, rowIndex, activeRow }: any) {
+function FinanceCategoryList({ item, rowIndex, activeRow }: any) {
   return (
     <>
       <div className={`p-2.5 flex-1 ${rowIndex === activeRow ? 'bg-workItemActive' : 'bg-workItem'}`}>{item.name}</div>
@@ -12,4 +12,4 @@ function FinanceCategoryListItem({ item, rowIndex, activeRow }: any) {
     </>
   )
 }
-export default FinanceCategoryListItem
+export default FinanceCategoryList

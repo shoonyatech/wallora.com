@@ -5,7 +5,7 @@ import { useToggle } from 'react-use'
 
 import Loader from '../../common/Loader'
 import ExpensePanelDetails from '../ExpensePanelDetails'
-import FinanceCategoryListItem from '../FinanceCategoryListItem'
+import FinanceCategoryList from '../FinanceCategoryList'
 import FinanceSpreadSheet from '../FinanceSpreadSheet'
 
 type financeCategoriesProps = {
@@ -62,8 +62,8 @@ const FinanceCategories = ({ columns, activeCell, setActiveCell }: financeCatego
   const togglePanel = (row: any, col: any) => {
     toggleIsOn()
     setPanelPosition({
-      top: `${topMargin + row * 49}px`,
-      left: `${leftMargin + Math.min(((columns - 1) * 160) % panelSize, col * 160)}px`,
+      top: `top-[${topMargin + row * 49}px]`,
+      left: `left-[${leftMargin + Math.min(((columns - 1) * 160) % panelSize, col * 160)}px]`,
     })
   }
 
@@ -74,7 +74,7 @@ const FinanceCategories = ({ columns, activeCell, setActiveCell }: financeCatego
         {workItems.map((item: any, rowIndex: any) => (
           <li key={item.id} className="h-12 flex mt-px">
             <div className="w-96 flex" onMouseOver={() => setActiveCell([rowIndex, activeColumn])}>
-              <FinanceCategoryListItem item={item} activeRow={activeRow} rowIndex={rowIndex} />
+              <FinanceCategoryList item={item} activeRow={activeRow} rowIndex={rowIndex} />
             </div>
             <FinanceSpreadSheet
               columns={columns}
