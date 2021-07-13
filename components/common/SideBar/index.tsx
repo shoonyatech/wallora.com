@@ -47,7 +47,7 @@ export default function MiniDrawer() {
   const [open, toggleIsOn] = useToggle(false)
 
   return (
-    <div className="hidden">
+    <div className="">
       <Drawer
         variant="permanent"
         className={clsx(classes.drawer, {
