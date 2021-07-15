@@ -1,15 +1,27 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React from 'react'
+import { useToggle } from 'react-use'
 
-const FinanceSpreadSheet = ({ columns, rowIndex, activeCell, setActiveCell, togglePanel }: any) => {
+import IncomeExpenseBrick from '../IncomeExpenseBrick'
+
+const FinanceSpreadSheet = ({ columns, rowIndex, activeCell, setActiveCell }: any) => {
   const isEqual = (a: any, b: any): Boolean => a <= b && a >= b
   const [activeRow, activeColumn] = activeCell
+  const map1 = new Map() // keeps track of ceslls for which button would be visible
+
+  map1.set('10', 1)
+  map1.set('12', 1)
+  map1.set('13', 1)
+  map1.set('14', 1)
+  map1.set('16', 1)
 
   return (
     <>
       {Array.from({ length: columns }, (_, columnIndex) => {
         const cellIndex = [rowIndex, columnIndex]
+        // eslint-disable-next-line react-hooks/rules-of-hooks
+        const [isOn, toggleIsOn] = useToggle(true)
 
         let borderStyles = ''
         if (isEqual(cellIndex, activeCell)) {
@@ -25,8 +37,12 @@ const FinanceSpreadSheet = ({ columns, rowIndex, activeCell, setActiveCell, togg
             key={`${rowIndex}${columnIndex}`}
             className={`w-40 p-5 border-box border-solid ${borderStyles} `}
             onMouseOver={() => setActiveCell(cellIndex)}
-            onClick={() => togglePanel(rowIndex, columnIndex)}
-          />
+            onClick={toggleIsOn}
+          >
+            {map1.get(`${rowIndex}${columnIndex}`) !== undefined && isOn ? (
+              <IncomeExpenseBrick keyValue={`${rowIndex}${columnIndex}`} />
+            ) : null}
+          </div>
         )
       })}
     </>

@@ -1,10 +1,8 @@
 /* eslint-disable jsx-a11y/mouse-events-have-key-events */
 import { gql, useQuery } from '@apollo/client'
-import React, { useState } from 'react'
-import { useToggle } from 'react-use'
+import React from 'react'
 
 import Loader from '../../common/Loader'
-import ExpensePanelDetails from '../ExpensePanelDetails'
 import FinanceCategoryList from '../FinanceCategoryList'
 import FinanceSpreadSheet from '../FinanceSpreadSheet'
 
@@ -27,27 +25,7 @@ const FinanceCategories = ({ columns, activeCell, setActiveCell }: financeCatego
       }
     }
   `
-  const leftMargin = 384
-  const topMargin = 138
-  const [panelPosition, setPanelPosition] = useState({
-    top: `${topMargin}px`,
-    left: `${leftMargin}px`,
-  })
-  const [isOn, toggleIsOn] = useToggle(false)
   const { loading, error, data } = useQuery(getCategories())
-  const defaultCurrency = '$'
-  const currencyList = ['INR', '$', 'YUH']
-  const [totalValues, setTotalValues] = useState({
-    rows: [
-      {
-        currency: defaultCurrency,
-        amount: 0,
-        comment: '',
-        tags: '',
-        person: '',
-      },
-    ],
-  })
   if (loading || error)
     return (
       <div>
@@ -56,16 +34,6 @@ const FinanceCategories = ({ columns, activeCell, setActiveCell }: financeCatego
     )
   const [activeRow, activeColumn] = activeCell
   const { workItems } = data.finance
-
-  const panelSize = 880
-
-  const togglePanel = (row: any, col: any) => {
-    toggleIsOn()
-    setPanelPosition({
-      top: `top-[${topMargin + row * 49}px]`,
-      left: `left-[${leftMargin + Math.min(((columns - 1) * 160) % panelSize, col * 160)}px]`,
-    })
-  }
 
   return (
     <div className="flex flex-col mt-0">
@@ -81,23 +49,10 @@ const FinanceCategories = ({ columns, activeCell, setActiveCell }: financeCatego
               rowIndex={rowIndex}
               activeCell={activeCell}
               setActiveCell={setActiveCell}
-              togglePanel={togglePanel}
             />
           </li>
         ))}
       </ul>
-      {isOn ? (
-        <div>
-          <ExpensePanelDetails
-            toggleIsOn={toggleIsOn}
-            totalValues={totalValues}
-            setTotalValues={setTotalValues}
-            currencyList={currencyList}
-            defaultCurrency={defaultCurrency}
-            panelPosition={panelPosition}
-          />
-        </div>
-      ) : null}
     </div>
   )
 }

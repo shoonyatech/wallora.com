@@ -18,9 +18,9 @@ const useStyles = makeStyles(() =>
   })
 )
 
-export default function IncomeExpenseBrick() {
+export default function IncomeExpenseBrick({ keyValue }: any) {
   const classes = useStyles()
-  const [isOn, toggleIsOn] = useToggle(false)
+  const [isOn, toggleIsOn] = useToggle(true)
   const [amount, updateAmountSum] = useState(0.0)
   const currencyList = ['INR', '$', 'YUH']
   const defaultCurrency = '$'
@@ -38,7 +38,7 @@ export default function IncomeExpenseBrick() {
 
   return (
     <ClientSideRendering>
-      <div className="ml-24">
+      <div className="ml-24" key={keyValue}>
         <Button
           size="large"
           type="submit"
