@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 import BaseLayout from '../components/common/BaseLayout'
 import FinanceCategories from '../components/finance/FinanceCategories'
 import FinanceDateHeader from '../components/finance/FinanceDateHeader'
+import IncomeExpenseBrick from '../components/finance/IncomeExpenseBrick'
 import { dateAfterDays, dateBeforeDays, startDateAfterMonths, startDateBeforeMonths } from '../lib/date-helper'
 
 const useStyles = makeStyles({
@@ -29,6 +30,7 @@ function Finance() {
 
   return (
     <div>
+      <IncomeExpenseBrick />
       <div>
         <div className="grid grid-cols-financeHeader h-16">
           <div />
