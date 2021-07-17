@@ -146,4 +146,116 @@ export const handlers = [
       })
     )
   ),
+  graphql.query('Currencies', (req, res, ctx) =>
+    res(
+      ctx.data({
+        currency: [
+          {
+            _id: '57a9d667719640648ed9e724',
+            order: 0,
+            symbol: '$',
+            code: 'USD',
+            name: 'US Dollar',
+            __v: 0,
+          },
+          {
+            _id: '57a9d667719640648ed9e725',
+            order: 1,
+            symbol: '€',
+            code: 'EUR',
+            name: 'Euro',
+            __v: 0,
+          },
+          {
+            _id: '57a9d667719640648ed9e726',
+            order: 2,
+            symbol: '&#x20b9;',
+            code: 'INR',
+            name: 'Indian Rupee',
+            __v: 0,
+          },
+          {
+            _id: '57a9d667719640648ed9e727',
+            order: 3,
+            symbol: '$',
+            code: 'AUD',
+            name: 'Australian dollar',
+            __v: 0,
+          },
+          {
+            _id: '57a9d667719640648ed9e728',
+            order: 4,
+            symbol: '&#xa3;',
+            code: 'GBP',
+            name: 'Pound',
+            __v: 0,
+          },
+          {
+            _id: '57a9d667719640648ed9e729',
+            order: 5,
+            symbol: '$',
+            code: 'SGD',
+            name: 'Singapore dollar',
+            __v: 0,
+          },
+          {
+            _id: '57a9d667719640648ed9e72a',
+            order: 6,
+            symbol: '¥',
+            code: 'JPY',
+            name: 'Japanese yen',
+            __v: 0,
+          },
+          {
+            _id: '57a9d667719640648ed9e72b',
+            order: 7,
+            symbol: 'Vt',
+            code: 'VUV',
+            name: 'Vanuatu vatu',
+            __v: 0,
+          },
+          {
+            _id: '57a9d667719640648ed9e72c',
+            order: 8,
+            symbol: '₫',
+            code: 'VND',
+            name: 'Vietnamese đồng',
+            __v: 0,
+          },
+          {
+            _id: '57a9d667719640648ed9e72d',
+            order: 9,
+            symbol: '₪',
+            code: 'ILS',
+            name: 'Israeli new shekel',
+            __v: 0,
+          },
+          {
+            _id: '57a9d667719640648ed9e72e',
+            order: 10,
+            symbol: '₭',
+            code: 'LAK',
+            name: 'Lao kip',
+            __v: 0,
+          },
+          {
+            _id: '57a9d667719640648ed9e72f',
+            order: 11,
+            symbol: 'P',
+            code: 'MOP',
+            name: 'Macanese pataca',
+            __v: 0,
+          },
+          {
+            _id: '57a9d667719640648ed9e730',
+            order: 12,
+            symbol: 'ر.ع.',
+            code: 'OMR',
+            name: 'Omani rial',
+            __v: 0,
+          },
+        ],
+      })
+    )
+  ),
 ]
