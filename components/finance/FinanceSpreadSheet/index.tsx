@@ -2,8 +2,9 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React from 'react'
 
+const isEqual = (a: any, b: any): Boolean => a <= b && a >= b
+
 const FinanceSpreadSheet = ({ columns, rowIndex, activeCell, setActiveCell, togglePanel }: any) => {
-  const isEqual = (a: any, b: any): Boolean => a <= b && a >= b
   const [activeRow, activeColumn] = activeCell
 
   return (
