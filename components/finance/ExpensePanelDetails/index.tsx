@@ -85,7 +85,7 @@ export default function ExpensePanelDetails({
   }
 
   return (
-    <div className={`rounded absolute z-10 ${panelPosition.left} ${panelPosition.top}`}>
+    <div className="rounded absolute z-10 " style={{ left: panelPosition.left, top: panelPosition.top }}>
       <div className="bg-secondary inline-block rounded">
         <ExpensePanelRows
           totalValues={totalValues}

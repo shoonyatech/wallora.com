@@ -15,6 +15,7 @@ const useStyles = makeStyles(() =>
       borderRadius: 0,
       color: 'white',
       width: '10rem',
+      fontWeight: 300,
       background: '#255d6d',
       '&:hover': {
         background: '#255d6d',
@@ -24,6 +25,7 @@ const useStyles = makeStyles(() =>
       borderRadius: 0,
       color: 'white',
       width: '10rem',
+      fontWeight: 300,
       background: '#389bb7',
       '&:hover': {
         background: '#389bb7',
@@ -37,10 +39,20 @@ const useStyles = makeStyles(() =>
         background: '#ffd2ad',
       },
     },
+    isActive: {
+      borderWidth: '0 2px',
+      borderStyle: 'solid',
+      boxSizing: 'border-box',
+    },
+    isActiveDate: {
+      fontWeight: 700,
+    },
   })
 )
 
-export default function FinanceDateHeader({ startDate, endDate }: any) {
+const isEqual = (a: any, b: any): Boolean => a <= b && a >= b
+
+export default function FinanceDateHeader({ startDate, endDate, activeColumn }: any) {
   const dates = []
   const classes = useStyles()
   const todayDisplayDate = getDateString(getDate())
@@ -52,11 +64,17 @@ export default function FinanceDateHeader({ startDate, endDate }: any) {
 
   return (
     <div className="flex">
-      {dates.map((x) => {
+      {dates.map((x, columnIndex) => {
         const newStyle = todayDisplayDate === x.date ? classes.todayHeader : classes.dateHeader
+
         return (
-          <div key={x.value} className="flex flex-col">
-            <Button disableRipple size="small" variant="contained" className={newStyle}>
+          <div key={x.value} className={`flex flex-col  ${isEqual(columnIndex, activeColumn) && classes.isActive}`}>
+            <Button
+              disableRipple
+              size="small"
+              variant="contained"
+              className={`${newStyle} ${isEqual(columnIndex, activeColumn) && classes.isActiveDate}`}
+            >
               {x.date}
             </Button>
             <Button disableRipple size="small" variant="contained" className={classes.values}>

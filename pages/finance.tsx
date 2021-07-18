@@ -32,7 +32,7 @@ function Finance() {
       <div>
         <div className="grid grid-cols-financeHeader h-16">
           <div />
-          <FinanceDateHeader startDate={values.startDate} endDate={values.endDate} />
+          <FinanceDateHeader startDate={values.startDate} endDate={values.endDate} activeColumn={activeCell[1]} />
         </div>
         <div className="flex">
           <FinanceCategories

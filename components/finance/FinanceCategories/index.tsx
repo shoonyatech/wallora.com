@@ -62,8 +62,8 @@ const FinanceCategories = ({ columns, activeCell, setActiveCell }: financeCatego
   const togglePanel = (row: any, col: any) => {
     toggleIsOn()
     setPanelPosition({
-      top: `top-[${topMargin + row * 49}px]`,
-      left: `left-[${leftMargin + Math.min(((columns - 1) * 160) % panelSize, col * 160)}px]`,
+      top: `${topMargin + row * 49}px`,
+      left: `${leftMargin + Math.min(((columns - 1) * 160) % panelSize, col * 160)}px`,
     })
   }
 
