@@ -82,7 +82,7 @@ export default function MiniDrawer() {
             </ListItem>
           </Link>
 
-          <Link href="/finance" passHref>
+          <Link href="/finance/actuals" passHref>
             <ListItem button key="Manage Finances">
               <ListItemIcon>
                 <InboxIcon />
