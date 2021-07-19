@@ -1,9 +1,6 @@
 import Head from 'next/head'
 import React from 'react'
 
-import Footer from '../components/common/Footer/index'
-import Header from '../components/common/Header/index'
-
 export default function Privacy() {
   return (
     <div className="min-w-full grid-cols-1 grid-rows-3">
@@ -14,7 +11,6 @@ export default function Privacy() {
           rel="stylesheet"
         />
       </Head>
-      <Header />
       <div className="m-96 my-16 font-sans">
         <h1>Privacy Policy</h1>
         <div>
@@ -242,7 +238,6 @@ export default function Privacy() {
           </p>
         </div>
       </div>
-      <Footer />
     </div>
   )
 }
