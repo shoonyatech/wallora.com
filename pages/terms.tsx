@@ -1,9 +1,6 @@
 import Head from 'next/head'
 import React from 'react'
 
-import Footer from '../components/common/Footer/index'
-import Header from '../components/common/Header/index'
-
 export default function Terms() {
   return (
     <div className="min-w-full grid-cols-1 grid-rows-3">
@@ -14,7 +11,6 @@ export default function Terms() {
           rel="stylesheet"
         />
       </Head>
-      <Header />
       <div className="m-96 my-16 font-sans">
         <h1>Terms of Use</h1>
         <p>
@@ -420,7 +416,6 @@ export default function Terms() {
           connection therewith from the non- prevailing party.
         </p>
       </div>
-      <Footer />
     </div>
   )
 }
