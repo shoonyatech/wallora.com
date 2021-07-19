@@ -1,11 +1,12 @@
 import { Button, makeStyles } from '@material-ui/core'
 import React, { useState } from 'react'
 
-import BaseLayout from '../components/common/BaseLayout'
-import FinanceCategories from '../components/finance/FinanceCategories'
-import FinanceDateHeader from '../components/finance/FinanceDateHeader'
-import IncomeExpenseBrick from '../components/finance/IncomeExpenseBrick'
-import { dateAfterDays, dateBeforeDays, startDateAfterMonths, startDateBeforeMonths } from '../lib/date-helper'
+import BaseLayout from '../../components/common/BaseLayout'
+import FinanceCategories from '../../components/finance/FinanceCategories'
+import FinanceDateHeader from '../../components/finance/FinanceDateHeader'
+import FinanceSwitch from '../../components/finance/FinanceSwitch'
+import IncomeExpenseBrick from '../../components/finance/IncomeExpenseBrick'
+import { dateAfterDays, dateBeforeDays, startDateAfterMonths, startDateBeforeMonths } from '../../lib/date-helper'
 
 const useStyles = makeStyles({
   button: {
@@ -33,7 +34,7 @@ function Finance() {
       <IncomeExpenseBrick />
       <div>
         <div className="grid grid-cols-financeHeader h-16">
-          <div />
+          <FinanceSwitch actualOrPlan="Actual" />
           <FinanceDateHeader startDate={values.startDate} endDate={values.endDate} activeColumn={activeCell[1]} />
         </div>
         <div className="flex">
