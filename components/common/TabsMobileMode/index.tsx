@@ -47,7 +47,7 @@ export default function ScrollableTabsButtonForce() {
         <Link href="/dashboard" passHref>
           <Tab icon={<HomeIcon />} {...a11yProps(0)} label="Dashboard" />
         </Link>
-        <Link href="/finance" passHref>
+        <Link href="/finance/actuals" passHref>
           <Tab icon={<AttachMoneyIcon />} {...a11yProps(0)} label="Finance" />
         </Link>
         <Link href="/contacts" passHref>
