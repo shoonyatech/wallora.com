@@ -2,7 +2,12 @@
 
 import { AppBar, Tab, Tabs } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
-import PhoneIcon from '@material-ui/icons/Phone'
+import AttachMoneyIcon from '@material-ui/icons/AttachMoney'
+import EqualizerIcon from '@material-ui/icons/Equalizer'
+import ExitToAppSharpIcon from '@material-ui/icons/ExitToAppSharp'
+import GroupIcon from '@material-ui/icons/Group'
+import HomeIcon from '@material-ui/icons/Home'
+import SettingsIcon from '@material-ui/icons/Settings'
 import clsx from 'clsx'
 import Link from 'next/link'
 import React from 'react'
@@ -39,20 +44,23 @@ export default function ScrollableTabsButtonForce() {
         textColor="primary"
         aria-label="scrollable force tabs example"
       >
-        <Link href="/money" passHref>
-          <Tab icon={<PhoneIcon />} {...a11yProps(0)} label="Manage Finances" />
+        <Link href="/dashboard" passHref>
+          <Tab icon={<HomeIcon />} {...a11yProps(0)} label="Dashboard" />
+        </Link>
+        <Link href="/finance" passHref>
+          <Tab icon={<AttachMoneyIcon />} {...a11yProps(0)} label="Finance" />
         </Link>
         <Link href="/contacts" passHref>
-          <Tab icon={<PhoneIcon />} {...a11yProps(1)} label="Manage Contacts" />
+          <Tab icon={<GroupIcon />} {...a11yProps(1)} label="Contacts" />
         </Link>
         <Link href="/analysis" passHref>
-          <Tab icon={<PhoneIcon />} {...a11yProps(2)} label="View Reports" />
+          <Tab icon={<EqualizerIcon />} {...a11yProps(2)} label="Analysis" />
         </Link>
         <Link href="/settings" passHref>
-          <Tab icon={<PhoneIcon />} {...a11yProps(3)} label="User Settings" />
+          <Tab icon={<SettingsIcon />} {...a11yProps(3)} label="Settings" />
         </Link>
         <Link href="/api/auth/logout" passHref>
-          <Tab icon={<PhoneIcon />} {...a11yProps(4)} label="Sign out" />
+          <Tab icon={<ExitToAppSharpIcon />} {...a11yProps(4)} label="Sign out" />
         </Link>
       </Tabs>
     </AppBar>
