@@ -1,9 +1,13 @@
 import { Divider, IconButton, List, ListItem, ListItemIcon, ListItemText } from '@material-ui/core'
 import Drawer from '@material-ui/core/Drawer'
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
+import AttachMoneyIcon from '@material-ui/icons/AttachMoney'
+import EqualizerIcon from '@material-ui/icons/Equalizer'
 import ExitToAppSharpIcon from '@material-ui/icons/ExitToAppSharp'
+import GroupIcon from '@material-ui/icons/Group'
+import HomeIcon from '@material-ui/icons/Home'
 import MenuIcon from '@material-ui/icons/Menu'
-import InboxIcon from '@material-ui/icons/MoveToInbox'
+import SettingsIcon from '@material-ui/icons/Settings'
 import clsx from 'clsx'
 import Link from 'next/link'
 import React from 'react'
@@ -76,36 +80,36 @@ export default function MiniDrawer() {
           <Link href="/dashboard" passHref>
             <ListItem button key="Dashboard">
               <ListItemIcon>
-                <InboxIcon />
+                <HomeIcon />
               </ListItemIcon>
               <ListItemText primary="Dashboard" />
             </ListItem>
           </Link>
 
           <Link href="/finance/actuals" passHref>
-            <ListItem button key="Manage Finances">
+            <ListItem button key="Finance">
               <ListItemIcon>
-                <InboxIcon />
+                <AttachMoneyIcon />
               </ListItemIcon>
-              <ListItemText primary="Manage Finances" />
+              <ListItemText primary="Finance" />
             </ListItem>
           </Link>
 
           <Link href="/contacts" passHref>
-            <ListItem button key="Manage Contacts">
+            <ListItem button key="Contacts">
               <ListItemIcon>
-                <InboxIcon />
+                <GroupIcon />
               </ListItemIcon>
-              <ListItemText primary="Manage Contacts" />
+              <ListItemText primary="Contacts" />
             </ListItem>
           </Link>
 
           <Link href="/analysis" passHref>
-            <ListItem button key="View Reports">
+            <ListItem button key="Analysis">
               <ListItemIcon>
-                <InboxIcon />
+                <EqualizerIcon />
               </ListItemIcon>
-              <ListItemText primary="View Reports" />
+              <ListItemText primary="Analysis" />
             </ListItem>
           </Link>
         </List>
@@ -113,11 +117,11 @@ export default function MiniDrawer() {
           <Divider />
 
           <Link href="/settings" passHref>
-            <ListItem button key="User Settings">
+            <ListItem button key="Settings">
               <ListItemIcon>
-                <InboxIcon />
+                <SettingsIcon />
               </ListItemIcon>
-              <ListItemText primary="User Settings" />
+              <ListItemText primary="Settings" />
             </ListItem>
           </Link>
           <Link href="/api/auth/logout" passHref>
