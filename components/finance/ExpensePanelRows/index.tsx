@@ -101,7 +101,7 @@ export default function ExpensePanelRows({
             <input
               onClick={handleRemoveSpecificRow(idx)}
               type="image"
-              src="./images/delete-20x20.jpg"
+              src="/images/delete-20x20.jpg"
               alt="Delete button for expense panel row"
             />
           </span>
