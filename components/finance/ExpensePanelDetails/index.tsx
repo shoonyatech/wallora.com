@@ -106,7 +106,7 @@ export default function ExpensePanelDetails({
             <input
               type="image"
               onClick={handleAddRow}
-              src="./images/add-25x25.jpg"
+              src="/images/add-25x25.jpg"
               alt="Add button for expense panel row."
             />
           </span>
