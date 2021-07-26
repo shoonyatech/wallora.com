@@ -70,7 +70,7 @@ export default function MiniDrawer() {
             <MenuIcon />
           </IconButton>
           <Link href="/" passHref>
-            <img src="./images/wallora-logo-170x53.jpeg" alt="This is Wallora logo." className="block cursor-pointer" />
+            <img src="./images/wallora-logo-170x53.jpeg" alt="Wallora logo" className="block cursor-pointer" />
           </Link>
         </div>
 
