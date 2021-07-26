@@ -107,7 +107,7 @@ export default function ExpensePanelDetails({
               type="image"
               onClick={handleAddRow}
               src="./images/add-25x25.jpg"
-              alt="This is delete button for expense panel row."
+              alt="Add button for expense panel row."
             />
           </span>
           <span className="float text-right w-1/2 flex justify-between">

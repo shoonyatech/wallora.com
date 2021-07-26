@@ -62,7 +62,7 @@ export default function IncomeExpenseBrick() {
   const currencyList = data.user.currencies.map((x: any) => x.symbol) // ['INR', '$', 'YUH']
   const { currency } = data.user.userSettings // '$'
 
-  setTotalValues({ rows: [...totalValues.rows, currency] })
+  // setTotalValues({ rows: [...totalValues.rows, currency] })
 
   return (
     <ClientSideRendering>

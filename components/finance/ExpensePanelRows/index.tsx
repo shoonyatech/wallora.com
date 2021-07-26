@@ -102,7 +102,7 @@ export default function ExpensePanelRows({
               onClick={handleRemoveSpecificRow(idx)}
               type="image"
               src="./images/delete-20x20.jpg"
-              alt="This is delete button for expense panel row."
+              alt="Delete button for expense panel row"
             />
           </span>
           <br />
