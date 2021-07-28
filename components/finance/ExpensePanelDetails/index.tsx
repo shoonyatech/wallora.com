@@ -43,14 +43,6 @@ export default function ExpensePanelDetails({
     })
   }
 
-  const updateAmount = () => {
-    // updateAmountSum(
-    //   totalValues.rows
-    //     .map((item: any): any => (item.amount !== undefined ? item.amount : 0))
-    //     .reduce((a: number, b: number) => parseFloat(a.toString()) + parseFloat(b.toString()), 0)
-    // )
-  }
-
   const handleAddRow = () => {
     const item = {
       currency: defaultCurrency,
@@ -62,7 +54,6 @@ export default function ExpensePanelDetails({
     setTotalValues({
       rows: [...totalValues.rows, item],
     })
-    updateAmount()
   }
   const handleRemoveSpecificRow = (idx: any) => () => {
     const rows = [...totalValues.rows]

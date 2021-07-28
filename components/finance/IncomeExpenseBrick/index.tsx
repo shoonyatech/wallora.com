@@ -47,7 +47,9 @@ export default function IncomeExpenseBrick({ togglePanel, totalValues, isActiveC
     )
 
   if (totalValues != null && isActiveCell) {
-    amount = totalValues.rows[0].amount
+    amount = totalValues.rows
+      .map((item: any): any => (item.amount !== undefined ? item.amount : 0))
+      .reduce((a: number, b: number) => parseFloat(a.toString()) + parseFloat(b.toString()), 0)
   }
 
   // const currencyList = data.user.currencies.map((x: any) => x.symbol) // ['INR', '$', 'YUH']
