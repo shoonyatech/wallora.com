@@ -1,12 +1,10 @@
 import { gql, useQuery } from '@apollo/client'
 import { Button, createStyles, makeStyles } from '@material-ui/core'
-import React, { useState } from 'react'
-import { useToggle } from 'react-use'
+import React from 'react'
 
 import ClientSideRendering from '../../../lib/client-side-rendering'
 import { getMantissa } from '../../../lib/string-parse-helper'
 import Loader from '../../common/Loader'
-import ExpensePanelDetails from '../ExpensePanelDetails'
 
 const GET_CURRENCY_DETAILS = () => gql`
   query Chart {
@@ -24,7 +22,8 @@ const GET_CURRENCY_DETAILS = () => gql`
 
 const useStyles = makeStyles(() =>
   createStyles({
-    deleteButton: {
+    brick: {
+      width: '100%',
       color: 'white',
       background: '#f16c6c',
       '&:hover': {
@@ -34,21 +33,9 @@ const useStyles = makeStyles(() =>
   })
 )
 
-export default function IncomeExpenseBrick() {
+export default function IncomeExpenseBrick({ togglePanel, totalValues, isActiveCell }: any) {
   const classes = useStyles()
-  const [isOn, toggleIsOn] = useToggle(false)
-  const [amount, updateAmountSum] = useState(0.0)
-  const [totalValues, setTotalValues] = useState({
-    rows: [
-      {
-        currency: '',
-        amount: 0,
-        comment: '',
-        tags: '',
-        person: '',
-      },
-    ],
-  })
+  let amount = 0.0
 
   const { loading, error, data } = useQuery(GET_CURRENCY_DETAILS())
 
@@ -59,38 +46,33 @@ export default function IncomeExpenseBrick() {
       </div>
     )
 
-  const currencyList = data.user.currencies.map((x: any) => x.symbol) // ['INR', '$', 'YUH']
+  if (totalValues != null && isActiveCell) {
+    amount = totalValues.rows[0].amount
+  }
+
+  // const currencyList = data.user.currencies.map((x: any) => x.symbol) // ['INR', '$', 'YUH']
   const { currency } = data.user.userSettings // '$'
 
-  // setTotalValues({ rows: [...totalValues.rows, currency] })
+  const handleClick = (e: any) => {
+    e.stopPropagation()
+    togglePanel()
+  }
 
   return (
     <ClientSideRendering>
-      <div className="ml-24">
+      <div className="w-full">
         <Button
           size="large"
           type="submit"
           color="primary"
-          className={classes.deleteButton}
-          onClick={toggleIsOn}
-          onKeyPress={toggleIsOn}
+          className={classes.brick}
+          onClick={handleClick}
+          onKeyPress={togglePanel}
         >
           <div className="text-sm">{currency}</div>
           <div className="text-lg">{amount.toString().split('.')[0]}</div>
           <div className="text-sm">{getMantissa(amount)}</div>
         </Button>
-        {isOn ? (
-          <div>
-            <ExpensePanelDetails
-              toggleIsOn={toggleIsOn}
-              totalValues={totalValues}
-              setTotalValues={setTotalValues}
-              updateAmountSum={updateAmountSum}
-              currencyList={currencyList}
-              currency={currency}
-            />
-          </div>
-        ) : null}
       </div>
     </ClientSideRendering>
   )
