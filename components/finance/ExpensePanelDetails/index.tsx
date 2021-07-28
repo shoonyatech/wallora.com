@@ -20,14 +20,14 @@ export default function ExpensePanelDetails({
   toggleIsOn,
   totalValues,
   setTotalValues,
-  updateAmountSum,
   currencyList,
   defaultCurrency,
   panelPosition,
 }: any) {
   const classes = useStyles()
-  const handleTotalValues = (valuen: any) => () => {
-    setTotalValues(valuen)
+
+  const handleTotalValues = (value: any) => () => {
+    setTotalValues(value)
     toggleIsOn()
   }
 
@@ -43,6 +43,14 @@ export default function ExpensePanelDetails({
     })
   }
 
+  const updateAmount = () => {
+    // updateAmountSum(
+    //   totalValues.rows
+    //     .map((item: any): any => (item.amount !== undefined ? item.amount : 0))
+    //     .reduce((a: number, b: number) => parseFloat(a.toString()) + parseFloat(b.toString()), 0)
+    // )
+  }
+
   const handleAddRow = () => {
     const item = {
       currency: defaultCurrency,
@@ -54,6 +62,7 @@ export default function ExpensePanelDetails({
     setTotalValues({
       rows: [...totalValues.rows, item],
     })
+    updateAmount()
   }
   const handleRemoveSpecificRow = (idx: any) => () => {
     const rows = [...totalValues.rows]
@@ -76,14 +85,6 @@ export default function ExpensePanelDetails({
     }
   }
 
-  const updateAmount = () => {
-    updateAmountSum(
-      totalValues.rows
-        .map((item: any): any => (item.amount !== undefined ? item.amount : 0))
-        .reduce((a: number, b: number) => parseFloat(a.toString()) + parseFloat(b.toString()), 0)
-    )
-  }
-
   return (
     <div className="rounded absolute z-10 " style={{ left: panelPosition.left, top: panelPosition.top }}>
       <div className="bg-secondary inline-block rounded">
@@ -95,13 +96,7 @@ export default function ExpensePanelDetails({
           defaultCurrency={defaultCurrency}
         />
 
-        <div
-          className="flex justify-between mb-2 mr-2"
-          onClick={updateAmount}
-          onKeyDown={updateAmount}
-          role="button"
-          tabIndex={0}
-        >
+        <div className="flex justify-between mb-2 mr-2">
           <span className="inline-block ml-2 mt-2 w-1/2">
             <input
               type="image"

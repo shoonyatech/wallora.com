@@ -82,6 +82,8 @@ const FinanceCategories = ({ columns, activeCell, setActiveCell }: financeCatego
               activeCell={activeCell}
               setActiveCell={setActiveCell}
               togglePanel={togglePanel}
+              totalValues={totalValues}
+              isOn={isOn}
             />
           </li>
         ))}
