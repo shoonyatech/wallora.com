@@ -22,6 +22,9 @@ module.exports = {
         workItemActive: '#81816d',
         plannedIncome: 'rgba(97,255,42,.43)',
         plannedExpense: 'rgba(255,114,114,.49)',
+        summaryItemTitle: 'rgb(209,213,219)',
+        summaryModalBackground: 'rgb(255,255,255)',
+        summaryBackground: 'rgb(0,0,0,0.5)',
       },
       fontFamily: {
         sans: [

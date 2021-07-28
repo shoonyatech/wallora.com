@@ -7,6 +7,7 @@ import Loader from '../../common/Loader'
 import ExpensePanelDetails from '../ExpensePanelDetails'
 import FinanceCategoryList from '../FinanceCategoryList'
 import FinanceSpreadSheet from '../FinanceSpreadSheet'
+import SummaryInfo from '../SummaryInfo'
 
 type financeCategoriesProps = {
   columns: number
@@ -48,6 +49,15 @@ const FinanceCategories = ({ columns, activeCell, setActiveCell }: financeCatego
       },
     ],
   })
+
+  const [summaryModal, setSummaryModal] = useToggle(false)
+  const [workItemInfo, setWorkItemInfo] = useState('')
+
+  const summaryOnClick = (workitem: any) => {
+    setSummaryModal()
+    setWorkItemInfo(workitem)
+  }
+
   if (loading || error)
     return (
       <div>
@@ -74,7 +84,12 @@ const FinanceCategories = ({ columns, activeCell, setActiveCell }: financeCatego
         {workItems.map((item: any, rowIndex: any) => (
           <li key={item.id} className="h-12 flex mt-px">
             <div className="w-96 flex" onMouseOver={() => setActiveCell([rowIndex, activeColumn])}>
-              <FinanceCategoryList item={item} activeRow={activeRow} rowIndex={rowIndex} />
+              <FinanceCategoryList
+                item={item}
+                activeRow={activeRow}
+                rowIndex={rowIndex}
+                summaryOnClick={summaryOnClick}
+              />
             </div>
             <FinanceSpreadSheet
               columns={columns}
@@ -100,6 +115,7 @@ const FinanceCategories = ({ columns, activeCell, setActiveCell }: financeCatego
           />
         </div>
       ) : null}
+      {summaryModal ? <SummaryInfo setSummaryModal={setSummaryModal} workItemInfo={workItemInfo} /> : null}
     </div>
   )
 }
