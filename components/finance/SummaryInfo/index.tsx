@@ -3,7 +3,7 @@ import React from 'react'
 
 export default function SummaryInfo({ setSummaryModal, workItemInfo }: any) {
   return (
-    <div className="bg-summaryBackground h-screen w-screen flex justify-end items-center top-0 fixed z-50 ">
+    <div className="bg-summaryBackground h-screen w-screen flex justify-end items-center top-0  z-50 ">
       <div className="bg-summaryModalBackground right-4 absolute h-5/6 flex flex-col mr-5">
         <div className="flex bg-secondary h-16 items-center justify-between">
           <div className="pl-6">
