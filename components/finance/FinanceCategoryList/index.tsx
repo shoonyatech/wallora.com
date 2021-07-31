@@ -5,7 +5,8 @@ function FinanceCategoryList({ item, rowIndex, activeRow, summaryOnClick }: any)
     <>
       <div
         onClick={() => summaryOnClick(item)}
-        onKeyDown={() => summaryOnClick(item)}
+        // onKeyDown={() => summaryOnClick(item)}
+        aria-hidden="true"
         role="button"
         tabIndex={0}
         className={`p-2.5 flex-1 cursor-pointer ${rowIndex === activeRow ? 'bg-workItemActive' : 'bg-workItem'}`}
