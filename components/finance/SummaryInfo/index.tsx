@@ -1,9 +1,57 @@
+import { gql, useQuery } from '@apollo/client'
 import CloseIcon from '@material-ui/icons/Close'
 import React from 'react'
 
+import Loader from '../../common/Loader'
+
 export default function SummaryInfo({ setSummaryModal, workItemInfo }: any) {
+  const getCategories = () => gql`
+    query Chart {
+      charts {
+        currentMonth {
+          budget
+          spent
+        }
+        predictedSavings {
+          savings {
+            currencyCode
+          }
+        }
+        plannedItems {
+          date
+          amount
+          comment
+          tags
+          contact
+        }
+        actualItems {
+          date
+          amount
+          comment
+          tags
+          contact
+        }
+      }
+    }
+  `
+  const { loading, error, data } = useQuery(getCategories())
+
+  if (loading || error)
+    return (
+      <div>
+        <Loader open={loading} error={error} />
+      </div>
+    )
+
+  const currentMonth = data.charts.currentMonth[0]
+  const { currencyCode } = data.charts.predictedSavings[0].savings
+  const { plannedItems } = data.charts
+  const { actualItems } = data.charts
+
+  const actualItemsAmount = actualItems.map((item: any) => item.amount).reduce((a: number, b: number) => a + b)
+
   return (
-    <div className="bg-summaryBackground h-screen w-screen flex justify-end items-center top-0  z-50 ">
+    <div className="bg-summaryBackground h-screen w-screen flex justify-end items-center top-0 right-0 fixed z-50 ">
       <div className="bg-summaryModalBackground right-4 absolute h-5/6 flex flex-col mr-5">
         <div className="flex bg-secondary h-16 items-center justify-between">
           <div className="pl-6">
@@ -30,126 +78,79 @@ export default function SummaryInfo({ setSummaryModal, workItemInfo }: any) {
             </div>
             <div>
               <ul className="list-none text-xs pl-0 mt-0">
-                <li>INR 7,000</li>
-                <li>INR 646</li>
-                <li>INR 6,354</li>
+                <li>
+                  {currencyCode} {currentMonth.budget}
+                </li>
+                <li>
+                  {currencyCode} {actualItemsAmount}
+                </li>
+                <li>
+                  {currencyCode} {currentMonth.budget - actualItemsAmount}
+                </li>
               </ul>
             </div>
           </div>
-
           <hr />
-
           <div className="flex ml-6 h-44 ">
             <div className="flex">
               <p className="w-36 h-full mt-5 text-sm">Planned items:</p>
             </div>
             <div className="flex flex-col">
               <div className="flex mt-5 text-xs">
-                <div>
-                  <p className="leading-3 pl-0.5 w-28 bg-summaryItemTitle py-2 m-0 mr-1">Date:</p>
-                </div>
-                <div>
-                  <p className="leading-3 pl-0.5 w-28 bg-summaryItemTitle py-2 m-0 mr-1">Amount:</p>
-                </div>
-                <div>
-                  <p className="leading-3 pl-0.5 w-40 bg-summaryItemTitle py-2 m-0 mr-1">Comment:</p>
-                </div>
-                <div>
-                  <p className="leading-3 pl-0.5 w-40 bg-summaryItemTitle py-2 m-0 mr-1">Tags:</p>
-                </div>
-                <div>
-                  <p className="leading-3 pl-0.5 w-28 bg-summaryItemTitle py-2 m-0 mr-1">Contacts:</p>
-                </div>
+                <ul className="list-none m-0 p-0 flex ">
+                  <li className="leading-3 pl-0.5 w-28 bg-summaryItemTitle py-2 m-0 mr-1">Date:</li>
+                  <li className="leading-3 pl-0.5 w-28 bg-summaryItemTitle py-2 m-0 mr-1">Amount:</li>
+                  <li className="leading-3 pl-0.5 w-40 bg-summaryItemTitle py-2 m-0 mr-1">Comment:</li>
+                  <li className="leading-3 pl-0.5 w-40 bg-summaryItemTitle py-2 m-0 mr-1">Tags:</li>
+                  <li className="leading-3 pl-0.5 w-28 bg-summaryItemTitle py-2 m-0 mr-1">Contacts:</li>
+                </ul>
               </div>
-              <div className="flex overflow-y-scroll">
-                <div>
-                  <ul className="list-none text-xs pl-0 mr-1 mt-0 w-28 ml-0">
-                    <li>JUL 2021</li>
-                    <li>AUG 2021</li>
-                    <li>SEP 2021</li>
-                    <li>OCT 2021</li>
-                    <li>NOV 2021</li>
-                    <li>DEC 2021</li>
-                    <li>JAN 2022</li>
-                    <li>FEB 2022</li>
-                    <li>MAR 2022</li>
-                  </ul>
-                </div>
-                <div>
-                  <ul className="list-none text-xs pl-0 mr-1 mt-0 w-28 ml-0">{/* Amount */}</ul>
-                </div>
-                <div>
-                  <ul className="list-none text-xs pl-0 mr-1 mt-0 w-40 ml-0">{/* Comment */}</ul>
-                </div>
-                <div>
-                  <ul className="list-none text-xs pl-0 mr-1 mt-0 w-40 ml-0">{/* Tags */}</ul>
-                </div>
-                <div>
-                  <ul className="list-none text-xs pl-0 mr-1 mt-0 w-28 ml-0">{/* Contacts */}</ul>
-                </div>
+              <div className="overflow-y-scroll h-44">
+                {plannedItems.map((item: any) => (
+                  <div className="flex text-xs">
+                    <ul className="list-none m-0 p-0 flex">
+                      <li className="leading-3 pl-0.5 w-28 py-2 m-0 mr-1">{item.date}</li>
+                      <li className="leading-3 pl-0.5 w-28 py-2 m-0 mr-1">
+                        {currencyCode} {item.amount}
+                      </li>
+                      <li className="leading-3 pl-0.5 w-40 py-2 m-0 mr-1">{item.comment}</li>
+                      <li className="leading-3 pl-0.5 w-40 py-2 m-0 mr-1">{item.tags}</li>
+                      <li className="leading-3 pl-0.5 w-28 py-2 m-0 mr-1">{item.contact}</li>
+                    </ul>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
-
           <hr />
-
           <div className="flex ml-6 h-44 ">
             <div className="flex">
               <p className="w-36 h-full mt-5 text-sm">Actual items:</p>
             </div>
             <div className="flex flex-col">
               <div className="flex mt-5 text-xs">
-                <div>
-                  <p className="leading-3 pl-0.5 w-28 bg-summaryItemTitle py-2 m-0 mr-1">Date:</p>
-                </div>
-                <div>
-                  <p className="leading-3 pl-0.5 w-28 bg-summaryItemTitle py-2 m-0 mr-1">Amount:</p>
-                </div>
-                <div>
-                  <p className="leading-3 pl-0.5 w-40 bg-summaryItemTitle py-2 m-0 mr-1">Comment:</p>
-                </div>
-                <div>
-                  <p className="leading-3 pl-0.5 w-40 bg-summaryItemTitle py-2 m-0 mr-1">Tags:</p>
-                </div>
-                <div>
-                  <p className="leading-3 pl-0.5 w-28 bg-summaryItemTitle py-2 m-0 mr-1">Contacts:</p>
-                </div>
+                <ul className="list-none m-0 p-0 flex ">
+                  <li className="leading-3 pl-0.5 w-28 bg-summaryItemTitle py-2 m-0 mr-1">Date:</li>
+                  <li className="leading-3 pl-0.5 w-28 bg-summaryItemTitle py-2 m-0 mr-1">Amount:</li>
+                  <li className="leading-3 pl-0.5 w-40 bg-summaryItemTitle py-2 m-0 mr-1">Comment:</li>
+                  <li className="leading-3 pl-0.5 w-40 bg-summaryItemTitle py-2 m-0 mr-1">Tags:</li>
+                  <li className="leading-3 pl-0.5 w-28 bg-summaryItemTitle py-2 m-0 mr-1">Contacts:</li>
+                </ul>
               </div>
-              <div className="flex overflow-y-scroll">
-                <div>
-                  <ul className="list-none text-xs pl-0 mr-1 mt-0 w-28 ml-0">
-                    <li>2/2 2021</li>
-                    <li>4/2 2021</li>
-                    <li>7/2 2021</li>
-                    <li>11/2 2021</li>
-                    <li>2/2 2021</li>
-                    <li>4/2 2021</li>
-                    <li>7/2 2021</li>
-                    <li>11/2 2021</li>
-                  </ul>
-                </div>
-                <div>
-                  <ul className="list-none text-xs pl-0 mr-1 mt-0 w-28 ml-0">
-                    <li>INR 120.00</li>
-                    <li>INR 230.00</li>
-                    <li>INR 547.00</li>
-                    <li>INR 120.00</li>
-                  </ul>
-                </div>
-                <div>
-                  <ul className="list-none text-xs pl-0 mr-1 mt-0 w-40 ml-0">
-                    <li>Egg Cheese</li>
-                    <li>Detergent</li>
-                    <li>Rice, Bread</li>
-                    <li>Cheese</li>
-                  </ul>
-                </div>
-                <div>
-                  <ul className="list-none text-xs pl-0 mr-1 mt-0 w-40 ml-0">{/* Tags */}</ul>
-                </div>
-                <div>
-                  <ul className="list-none text-xs pl-0 mr-1 mt-0 w-28 ml-0">{/* Contacts */}</ul>
-                </div>
+              <div className="overflow-y-scroll h-44">
+                {actualItems.map((item: any) => (
+                  <div className="flex text-xs">
+                    <ul className="list-none m-0 p-0 flex">
+                      <li className="leading-3 pl-0.5 w-28 py-2 m-0 mr-1">{item.date}</li>
+                      <li className="leading-3 pl-0.5 w-28 py-2 m-0 mr-1">
+                        {currencyCode} {item.amount}
+                      </li>
+                      <li className="leading-3 pl-0.5 w-40 py-2 m-0 mr-1">{item.comment}</li>
+                      <li className="leading-3 pl-0.5 w-40 py-2 m-0 mr-1">{item.tags}</li>
+                      <li className="leading-3 pl-0.5 w-28 py-2 m-0 mr-1">{item.contact}</li>
+                    </ul>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
