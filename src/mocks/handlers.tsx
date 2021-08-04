@@ -12,6 +12,44 @@ export const handlers = [
       })
     )
   ),
+  rest.get(`${process.env.WALLORA_BACKEND_WORKITEM_CURRENTMONTH}`, (req, res, ctx) =>
+    res(
+      ctx.status(200),
+      ctx.json({
+        month: 202107,
+        totalPlannedIncome: 150000,
+        totalPlannedExpenses: 42000,
+      })
+    )
+  ),
+  rest.get(`${process.env.WALLORA_BACKEND_WORKITEM_PLANNED_ITEMS}`, (req, res, ctx) =>
+    res(
+      ctx.status(200),
+      ctx.json({
+        expenses: [
+          {
+            month: 202107,
+            totalPlannedIncome: 150000,
+            totalPlannedExpenses: 42000,
+          },
+        ],
+      })
+    )
+  ),
+  rest.get(`${process.env.WALLORA_BACKEND_WORKITEM_ACTUAL_ITEMS}`, (req, res, ctx) =>
+    res(
+      ctx.status(200),
+      ctx.json({
+        expenses: [
+          {
+            month: 202107,
+            totalPlannedIncome: 150000,
+            totalPlannedExpenses: 42000,
+          },
+        ],
+      })
+    )
+  ),
   rest.get(`${process.env.WALLORA_BACKEND_TOTAL_PLANNED_EXPENSES_MONTHWISE}`, (req, res, ctx) =>
     res(
       ctx.status(200),
