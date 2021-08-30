@@ -13,8 +13,11 @@ export default function Footer() {
           <Link href="/privacy">
             <a target="_blank">Privacy Policy</a>
           </Link>
+          <Link href="https://github.com/shoonyatech/wallora.com">
+            <a target="_blank">Contribute</a>
+          </Link>
         </span>
-        <span className="flex flex-row">
+        <span className="flex flex-row items-center">
           <div className="bg-sprite-background bg-no-repeat" style={{ width: 60, height: 60 }} />
           <a href="https://www.facebook.com/wallora/" target="_blank" rel="noreferrer">
             <div
