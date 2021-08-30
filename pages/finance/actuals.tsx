@@ -1,7 +1,7 @@
+import { withPageAuthRequired } from '@auth0/nextjs-auth0'
 import { Button, makeStyles } from '@material-ui/core'
 import React, { useState } from 'react'
 
-import BaseLayout from '../../components/common/BaseLayout'
 import FinanceCategories from '../../components/finance/FinanceCategories'
 import FinanceDateHeader from '../../components/finance/FinanceDateHeader'
 import FinanceSwitch from '../../components/finance/FinanceSwitch'
@@ -15,7 +15,7 @@ const useStyles = makeStyles({
   },
 })
 
-function Finance() {
+export default withPageAuthRequired(() => {
   const classes = useStyles()
   const marginLeft = 384
   const spreadSheetWidth = window.innerWidth - marginLeft
@@ -122,8 +122,4 @@ function Finance() {
       </div>
     </div>
   )
-}
-
-Finance.Layout = BaseLayout
-
-export default Finance
+})
