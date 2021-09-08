@@ -13,6 +13,7 @@ Wallora webapp recreated using React
 - Rajakvk (@rajakvk)
 - Kratika Chowdhary (@kratika0907)
 - KartheeK Paturu (@kartheekwd)
+- Shubham Dave (@shubhamdave001)
 
 # Getting Started
 
