@@ -52,6 +52,7 @@
     "qs": "^6.10.1",
     "react": "17.0.1",
     "react-dom": "17.0.1",
+    "react-router-dom": "^5.3.0",
     "react-use": "^17.2.4",
     "recharts": "^2.0.9",
     "storybook-addon-next-router": "^2.0.4"
