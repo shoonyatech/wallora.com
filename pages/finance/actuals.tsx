@@ -32,7 +32,7 @@ export default withPageAuthRequired(() => {
     <div>
       <div>
         <div className="grid grid-cols-financeHeader h-16">
-          <FinanceSwitch actualOrPlan="Actual" />
+          <FinanceSwitch actualOrPlan="actuals" />
           <FinanceDateHeader startDate={values.startDate} endDate={values.endDate} activeColumn={activeCell[1]} />
         </div>
         <div className="flex">
