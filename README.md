@@ -61,6 +61,16 @@ npm run dev
 npm run storybook
 ```
 
+### To setup graphql
+
+Please refer [wallora.graphql](github.com/shoonyatech/wallora.graphql) to setup graphql server
+
+After setup graphql server, start graphql server in separate command line
+
+```
+npm run start
+```
+
 ### To use Auth0
 
 - Use `wallora.test@gmail.com` to login to auth0 [website](https://auth0.auth0.com/u/login/) using google.
