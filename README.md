@@ -63,7 +63,7 @@ npm run storybook
 
 ### To setup graphql
 
-Please refer [wallora.graphql](github.com/shoonyatech/wallora.graphql) to setup graphql server
+Please refer https://www.github.com/shoonyatech/wallora.graphql to setup graphql server
 
 After setup graphql server, start graphql server in separate command line
 
