@@ -95,7 +95,8 @@ References:
 ## To create a commit and raise a Pull Request (PR)
 
 - Save your changes and create a local commit
-- [commitizen](https://github.com/commitizen/cz-cli) is enabled to mantain a consistent commit format
+- [commitizen](https://github.com/commitizen/cz-cli) is enabled to maintain a consistent commit format
+- Refer [conventional commits specification](https://www.conventionalcommits.org/en/v1.0.0/) for rational behind the format.
 
 ```
 doc|feat|fix|build(<page name>): <one liner of what is done in present tense>
