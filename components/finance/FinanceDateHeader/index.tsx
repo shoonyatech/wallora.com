@@ -49,9 +49,9 @@ const useStyles = makeStyles(() =>
 
 const isEqual = (a: any, b: any): Boolean => a <= b && a >= b
 
-const getHeadings = () => gql`
-  query Finance {
-    finance {
+const GET_HEADINGS = gql`
+  query Finance($startDate: String, $endDate: String) {
+    finance(startDate: $startDate, endDate: $endDate) {
       actuals {
         dates {
           date
@@ -61,8 +61,11 @@ const getHeadings = () => gql`
     }
   }
 `
-export default function FinanceDateHeader({ activeColumn }: any) {
-  const { loading, error, data } = useQuery(getHeadings())
+
+export default function FinanceDateHeader({ startDate, endDate, activeColumn }: any) {
+  const { loading, error, data } = useQuery(GET_HEADINGS, {
+    variables: { startDate, endDate },
+  })
 
   const classes = useStyles()
   const todayDisplayDate = getDateString(getDate())

@@ -296,13 +296,17 @@ export const handlers = [
       })
     )
   ),
-  graphql.query('Finance', (req, res, ctx) =>
-    res(
+  graphql.query('Finance', (req, res, ctx) => {
+    // eslint-disable-next-line no-unused-vars
+    const { startDate, endDate } = req.variables
+    return res(
       ctx.data({
         finance: {
           currentMonth: '2021-10',
           incomeExpenseCategories: [
             {
+              id: 1,
+              order: 1,
               name: 'Income',
               incomeOrExpense: 'income',
               currency: 'INR',
@@ -310,6 +314,8 @@ export const handlers = [
               actualTotal: 90000,
             },
             {
+              id: 2,
+              order: 2,
               name: 'Taxes',
               incomeOrExpense: 'expense',
               currency: 'INR',
@@ -318,6 +324,8 @@ export const handlers = [
               percentageOfTotalExpense: 17,
             },
             {
+              id: 3,
+              order: 3,
               name: 'Grocery',
               incomeOrExpense: 'expense',
               currency: 'INR',
@@ -411,7 +419,7 @@ export const handlers = [
         },
       })
     )
-  ),
+  }),
   graphql.query('Headings', (req, res, ctx) =>
     res(
       ctx.data({

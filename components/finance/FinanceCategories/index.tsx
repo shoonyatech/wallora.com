@@ -19,7 +19,7 @@ const FinanceCategories = ({ columns, activeCell, setActiveCell }: financeCatego
   const getCategories = () => gql`
     query Finance {
       finance {
-        workItems {
+        incomeExpenseCategories {
           name
           incomeOrExpense
           order
@@ -65,8 +65,7 @@ const FinanceCategories = ({ columns, activeCell, setActiveCell }: financeCatego
       </div>
     )
   const [activeRow, activeColumn] = activeCell
-  const { workItems } = data.finance
-
+  const workItems = data.finance.incomeExpenseCategories
   const panelSize = 880
 
   const togglePanel = (row: any, col: any) => {
