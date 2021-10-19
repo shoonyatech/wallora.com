@@ -1,6 +1,7 @@
 import React from 'react'
 
 function FinanceCategoryList({ item, rowIndex, activeRow, summaryOnClick, actualsOrPlan, percentage }: any) {
+  // console.log(percentage.toString())
   return (
     <>
       {actualsOrPlan === 'actuals' ? (
@@ -32,9 +33,29 @@ function FinanceCategoryList({ item, rowIndex, activeRow, summaryOnClick, actual
             {item.name}
           </div>
           <div className={` w-24`}>
-            <div style={{ width: `${percentage}%` }} className="p-2.5 text-center bg-red-200">
-              {percentage}%
-            </div>
+            {percentage === null ? (
+              <div
+                style={{ position: 'relative', textAlign: 'left', height: '100%' }}
+                className="text-center bg-plannedIncome"
+              >
+                <span
+                  style={{ position: 'absolute', top: '50%', transform: 'translate(0, -50%)', paddingLeft: '10px' }}
+                >
+                  %
+                </span>
+              </div>
+            ) : (
+              <div
+                style={{ width: `${percentage.toString()}%`, position: 'relative', textAlign: 'left', height: '100%' }}
+                className="text-center bg-red-200"
+              >
+                <span
+                  style={{ position: 'absolute', top: '50%', transform: 'translate(0, -50%)', paddingLeft: '10px' }}
+                >
+                  {percentage}%
+                </span>
+              </div>
+            )}
           </div>
         </>
       )}

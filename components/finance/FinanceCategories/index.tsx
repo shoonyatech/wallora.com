@@ -26,6 +26,18 @@ const FinanceCategories = ({ columns, activeCell, setActiveCell }: financeCatego
           order
           id
         }
+        workItemsPlan {
+          months {
+            currentMonth
+            incomeExpenseCategories {
+              name
+              incomeOrExpense
+              currency
+              plannedTotal
+              percentageOfTotalExpense
+            }
+          }
+        }
       }
 
       charts {
@@ -77,7 +89,8 @@ const FinanceCategories = ({ columns, activeCell, setActiveCell }: financeCatego
       </div>
     )
   const [activeRow, activeColumn] = activeCell
-  const workItems = data.finance.incomeExpenseCategories
+  const { workItems, workItemsPlan } = data.finance
+
   const panelSize = 880
 
   const togglePanel = (row: any, col: any) => {
@@ -87,9 +100,6 @@ const FinanceCategories = ({ columns, activeCell, setActiveCell }: financeCatego
       left: `${leftMargin + Math.min(((columns - 1) * 160) % panelSize, col * 160)}px`,
     })
   }
-
-  const { currentMonth } = data.charts
-  const percentage = Math.round((currentMonth[0].spent / currentMonth[0].budget) * 100)
 
   return (
     <div className="flex flex-col mt-0">
@@ -121,7 +131,7 @@ const FinanceCategories = ({ columns, activeCell, setActiveCell }: financeCatego
         </ul>
       ) : (
         <ul className="flex flex-col mt-0 ml-0">
-          {workItems.map((item: any, rowIndex: any) => (
+          {workItemsPlan.months[0].incomeExpenseCategories.map((item: any, rowIndex: any) => (
             <li key={item.id} className="h-12 flex mt-px">
               <div className="w-96 flex" onMouseOver={() => setActiveCell([rowIndex, activeColumn])}>
                 <FinanceCategoryList
@@ -130,7 +140,7 @@ const FinanceCategories = ({ columns, activeCell, setActiveCell }: financeCatego
                   rowIndex={rowIndex}
                   summaryOnClick={summaryOnClick}
                   actualsOrPlan={actualSwitch}
-                  percentage={percentage}
+                  percentage={item.percentageOfTotalExpense}
                 />
               </div>
               <FinanceSpreadSheet
