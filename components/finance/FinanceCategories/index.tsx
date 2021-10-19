@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/mouse-events-have-key-events */
 import { gql, useQuery } from '@apollo/client'
+import { useRouter } from 'next/router'
 import React, { useState } from 'react'
 import { useToggle } from 'react-use'
 
@@ -17,7 +18,7 @@ type financeCategoriesProps = {
 
 const FinanceCategories = ({ columns, activeCell, setActiveCell }: financeCategoriesProps) => {
   const getCategories = () => gql`
-    query Finance {
+    {
       finance {
         incomeExpenseCategories {
           name
@@ -25,9 +26,32 @@ const FinanceCategories = ({ columns, activeCell, setActiveCell }: financeCatego
           order
           id
         }
+        workItemsPlan {
+          months {
+            currentMonth
+            incomeExpenseCategories {
+              name
+              incomeOrExpense
+              currency
+              plannedTotal
+              percentageOfTotalExpense
+            }
+          }
+        }
+      }
+
+      charts {
+        currentMonth {
+          budget
+          spent
+        }
       }
     }
   `
+
+  const router = useRouter()
+  const actualSwitch = router.pathname.split('/')[2]
+
   const leftMargin = 384
   const topMargin = 138
   const [panelPosition, setPanelPosition] = useState({
@@ -65,7 +89,8 @@ const FinanceCategories = ({ columns, activeCell, setActiveCell }: financeCatego
       </div>
     )
   const [activeRow, activeColumn] = activeCell
-  const workItems = data.finance.incomeExpenseCategories
+  const { workItems, workItemsPlan } = data.finance
+
   const panelSize = 880
 
   const togglePanel = (row: any, col: any) => {
@@ -79,29 +104,58 @@ const FinanceCategories = ({ columns, activeCell, setActiveCell }: financeCatego
   return (
     <div className="flex flex-col mt-0">
       <div className="h-6">Income/Expense</div>
-      <ul className="flex flex-col mt-0 ml-0">
-        {workItems.map((item: any, rowIndex: any) => (
-          <li key={item.id} className="h-12 flex mt-px">
-            <div className="w-96 flex" onMouseOver={() => setActiveCell([rowIndex, activeColumn])}>
-              <FinanceCategoryList
-                item={item}
-                activeRow={activeRow}
+      {actualSwitch === 'actuals' ? (
+        <ul className="flex flex-col mt-0 ml-0">
+          {workItems.map((item: any, rowIndex: any) => (
+            <li key={item.id} className="h-12 flex mt-px">
+              <div className="w-96 flex" onMouseOver={() => setActiveCell([rowIndex, activeColumn])}>
+                <FinanceCategoryList
+                  item={item}
+                  activeRow={activeRow}
+                  rowIndex={rowIndex}
+                  summaryOnClick={summaryOnClick}
+                  actualsOrPlan={actualSwitch}
+                />
+              </div>
+              <FinanceSpreadSheet
+                columns={columns}
                 rowIndex={rowIndex}
-                summaryOnClick={summaryOnClick}
+                activeCell={activeCell}
+                setActiveCell={setActiveCell}
+                togglePanel={togglePanel}
+                totalValues={totalValues}
+                isOn={isOn}
               />
-            </div>
-            <FinanceSpreadSheet
-              columns={columns}
-              rowIndex={rowIndex}
-              activeCell={activeCell}
-              setActiveCell={setActiveCell}
-              togglePanel={togglePanel}
-              totalValues={totalValues}
-              isOn={isOn}
-            />
-          </li>
-        ))}
-      </ul>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <ul className="flex flex-col mt-0 ml-0">
+          {workItemsPlan.months[0].incomeExpenseCategories.map((item: any, rowIndex: any) => (
+            <li key={item.id} className="h-12 flex mt-px">
+              <div className="w-96 flex" onMouseOver={() => setActiveCell([rowIndex, activeColumn])}>
+                <FinanceCategoryList
+                  item={item}
+                  activeRow={activeRow}
+                  rowIndex={rowIndex}
+                  summaryOnClick={summaryOnClick}
+                  actualsOrPlan={actualSwitch}
+                  percentage={item.percentageOfTotalExpense}
+                />
+              </div>
+              <FinanceSpreadSheet
+                columns={columns}
+                rowIndex={rowIndex}
+                activeCell={activeCell}
+                setActiveCell={setActiveCell}
+                togglePanel={togglePanel}
+                totalValues={totalValues}
+                isOn={isOn}
+              />
+            </li>
+          ))}
+        </ul>
+      )}
       {isOn ? (
         <div>
           <ExpensePanelDetails
