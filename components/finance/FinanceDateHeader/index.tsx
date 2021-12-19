@@ -1,13 +1,10 @@
+import { gql, useQuery } from '@apollo/client'
 import { Button } from '@material-ui/core'
 import { createStyles, makeStyles } from '@material-ui/core/styles'
-import { Moment } from 'moment'
 import React from 'react'
 
 import { getDate, getDateString } from '../../../lib/date-helper'
-
-function createDate(date: Moment, value: number) {
-  return { date: getDateString(date), value }
-}
+import Loader from '../../common/Loader'
 
 const useStyles = makeStyles(() =>
   createStyles({
@@ -52,15 +49,30 @@ const useStyles = makeStyles(() =>
 
 const isEqual = (a: any, b: any): Boolean => a <= b && a >= b
 
+const GET_HEADINGS = gql`
+  query ActualsDates($startDate: String!, $endDate: String!) {
+    actualsDates(startDate: $startDate, endDate: $endDate) {
+      date
+      totalSpent
+    }
+  }
+`
+
 export default function FinanceDateHeader({ startDate, endDate, activeColumn }: any) {
-  const dates = []
+  const { loading, error, data } = useQuery(GET_HEADINGS, {
+    variables: { startDate: startDate.format('YYYYMMDD'), endDate: endDate.format('YYYYMMDD') },
+  })
+
   const classes = useStyles()
   const todayDisplayDate = getDateString(getDate())
 
-  for (let i = startDate.clone(), j = 0; i.diff(endDate, 'days') <= 0; i.add(1, 'days')) {
-    dates.push(createDate(i, j))
-    j += 1
-  }
+  if (loading || error)
+    return (
+      <div>
+        <Loader open={loading} error={error} />
+      </div>
+    )
+  const dates = data.actualsDates
 
   return (
     <div className="flex">
@@ -68,7 +80,7 @@ export default function FinanceDateHeader({ startDate, endDate, activeColumn }: 
         const newStyle = todayDisplayDate === x.date ? classes.todayHeader : classes.dateHeader
 
         return (
-          <div key={x.value} className={`flex flex-col  ${isEqual(columnIndex, activeColumn) && classes.isActive}`}>
+          <div key={x.date} className={`flex flex-col  ${isEqual(columnIndex, activeColumn) && classes.isActive}`}>
             <Button
               disableRipple
               size="small"
@@ -78,7 +90,7 @@ export default function FinanceDateHeader({ startDate, endDate, activeColumn }: 
               {x.date}
             </Button>
             <Button disableRipple size="small" variant="contained" className={classes.values}>
-              {x.value}
+              {x.totalSpent}
             </Button>
           </div>
         )

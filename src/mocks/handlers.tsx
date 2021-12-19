@@ -296,4 +296,156 @@ export const handlers = [
       })
     )
   ),
+  graphql.query('Finance', (req, res, ctx) => {
+    // eslint-disable-next-line no-unused-vars
+    const { startDate, endDate } = req.variables
+    return res(
+      ctx.data({
+        finance: {
+          currentMonth: '2021-10',
+          incomeExpenseCategories: [
+            {
+              id: 1,
+              order: 1,
+              name: 'Income',
+              incomeOrExpense: 'income',
+              currency: 'INR',
+              plannedTotal: 100000,
+              actualTotal: 90000,
+            },
+            {
+              id: 2,
+              order: 2,
+              name: 'Taxes',
+              incomeOrExpense: 'expense',
+              currency: 'INR',
+              plannedTotal: 20000,
+              actualTotal: 19000,
+              percentageOfTotalExpense: 17,
+            },
+            {
+              id: 3,
+              order: 3,
+              name: 'Grocery',
+              incomeOrExpense: 'expense',
+              currency: 'INR',
+              plannedTotal: 20000,
+              actualTotal: 19000,
+              percentageOfTotalExpense: 4,
+            },
+          ],
+          actuals: {
+            dates: [
+              {
+                date: '2021-10-05',
+                totalSpent: 19000,
+                workItems: [
+                  {
+                    id: 12541,
+                    incomeOrExpense: 'income',
+                    category: 'Income',
+                    lineItems: [
+                      {
+                        description: 'October Salary',
+                        currency: 'INR',
+                        amount: 70000,
+                        tags: ['Salary'],
+                      },
+                    ],
+                  },
+                  {
+                    id: 12542,
+                    incomeOrExpense: 'expense',
+                    category: 'Taxes',
+                    lineItems: [
+                      {
+                        description: '',
+                        currency: 'INR',
+                        amount: 19000,
+                        tags: ['Income Tax'],
+                      },
+                    ],
+                  },
+                ],
+              },
+              {
+                date: '2021-10-06',
+                totalSpent: 8000,
+                workItems: [
+                  {
+                    id: 18542,
+                    incomeOrExpense: 'expense',
+                    category: 'Bills and EMI',
+                    lineItems: [
+                      {
+                        description: 'Home Loan',
+                        currency: 'INR',
+                        amount: 8000,
+                        tags: ['Loan'],
+                      },
+                    ],
+                  },
+                ],
+              },
+              {
+                date: '2021-10-07',
+                totalSpent: 10,
+                workItems: [],
+              },
+            ],
+          },
+          plan: {
+            months: [
+              {
+                month: '2021-10',
+                workItems: [
+                  {
+                    id: 18542,
+                    incomeOrExpense: 'income',
+                    category: 'Income',
+                    lineItems: [
+                      {
+                        description: '',
+                        currency: 'INR',
+                        amount: 120000,
+                        tags: ['Salary'],
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      })
+    )
+  }),
+  graphql.query('Headings', (req, res, ctx) =>
+    res(
+      ctx.data({
+        dates: [
+          {
+            date: '01 Oct 2021',
+            value: 12000,
+          },
+          {
+            date: '02 Oct 2021',
+            value: 14320,
+          },
+          {
+            date: '03 Oct 2021',
+            value: 28542,
+          },
+          {
+            date: '04 Oct 2021',
+            value: 3000,
+          },
+          {
+            date: '05 Oct 2021',
+            value: 5244,
+          },
+        ],
+      })
+    )
+  ),
 ]

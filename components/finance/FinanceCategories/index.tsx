@@ -17,17 +17,16 @@ type financeCategoriesProps = {
 
 const FinanceCategories = ({ columns, activeCell, setActiveCell }: financeCategoriesProps) => {
   const getCategories = () => gql`
-    query Finance {
-      finance {
-        workItems {
-          name
-          incomeOrExpense
-          order
-          id
-        }
+    query IncomeExpenseCategoriesWorkItems {
+      incomeExpenseCategoriesWorkItems {
+        name
+        incomeOrExpense
+        order
+        id
       }
     }
   `
+
   const leftMargin = 384
   const topMargin = 138
   const [panelPosition, setPanelPosition] = useState({
@@ -65,8 +64,7 @@ const FinanceCategories = ({ columns, activeCell, setActiveCell }: financeCatego
       </div>
     )
   const [activeRow, activeColumn] = activeCell
-  const { workItems } = data.finance
-
+  const workItems = data.incomeExpenseCategoriesWorkItems
   const panelSize = 880
 
   const togglePanel = (row: any, col: any) => {

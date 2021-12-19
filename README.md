@@ -14,6 +14,8 @@ Wallora webapp recreated using React
 - Kratika Chowdhary (@kratika0907)
 - KartheeK Paturu (@kartheekwd)
 - Shubham Dave (@shubhamdave001)
+- Shriram Sapparad (@shriramcs)
+- Kevin (@lordofthegithub)
 
 # Getting Started
 
@@ -61,6 +63,16 @@ npm run dev
 npm run storybook
 ```
 
+### To setup graphql
+
+Please refer https://www.github.com/shoonyatech/wallora.graphql to setup graphql server
+
+After setup graphql server, start graphql server in separate command line
+
+```
+npm run start
+```
+
 ### To use Auth0
 
 - Use `wallora.test@gmail.com` to login to auth0 [website](https://auth0.auth0.com/u/login/) using google.
@@ -83,7 +95,8 @@ References:
 ## To create a commit and raise a Pull Request (PR)
 
 - Save your changes and create a local commit
-- [commitizen](https://github.com/commitizen/cz-cli) is enabled to mantain a consistent commit format
+- [commitizen](https://github.com/commitizen/cz-cli) is enabled to maintain a consistent commit format
+- Refer [conventional commits specification](https://www.conventionalcommits.org/en/v1.0.0/) for rational behind the format.
 
 ```
 doc|feat|fix|build(<page name>): <one liner of what is done in present tense>
