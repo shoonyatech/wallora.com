@@ -1,9 +1,52 @@
 /* eslint-disable react/no-array-index-key */
 import { gql, useQuery } from '@apollo/client'
+import { makeStyles } from '@material-ui/core'
 import React from 'react'
 import { Cell, Legend, Pie, PieChart, ResponsiveContainer } from 'recharts'
 
 import Loader from '../../common/Loader'
+
+const useStyles = makeStyles((theme) => ({
+  component: {
+    display: 'flex',
+    justifyContent: 'center',
+    marginTop: '20px',
+    marginBottom: '40px',
+    [theme.breakpoints.down('sm')]: {
+      display: 'grid',
+    },
+  },
+  boxes: {
+    width: '500px',
+    height: '350px',
+    border: '1px solid #ddcfcf',
+    marginLeft: '20px',
+    marginTop: '0px',
+    [theme.breakpoints.down('sm')]: {
+      width: '400px',
+      marginLeft: '-70px',
+      marginTop: '20px',
+    },
+  },
+  heading1: {
+    fontSize: '1.25rem',
+    paddingLeft: '10px',
+    backgroundColor: '#57d028',
+  },
+  heading2: {
+    fontSize: '1.25rem',
+    paddingLeft: '10px',
+    backgroundColor: '#f16c6c',
+  },
+  heading: {
+    fontSize: '1.25rem',
+    display: 'flex',
+    justifyContent: 'center',
+    [theme.breakpoints.down('sm')]: {
+      justifyContent: 'start',
+    },
+  },
+}))
 
 const CURRENT_WORTH = () => gql`
   query Chart {
@@ -31,6 +74,7 @@ function CurrentWorth() {
   const { loading, error, data } = useQuery(CURRENT_WORTH())
   const { loading: loadingOwned, error: errorOwned, data: dataOwe } = useQuery(OWE_WORTH())
   const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#E21226', '#FF66B2']
+  const classes = useStyles()
 
   if (errorOwned || loadingOwned)
     return (
@@ -51,14 +95,12 @@ function CurrentWorth() {
 
   return (
     <div>
-      <h1 className="text-2xl flex justify-center">
+      <h1 className={classes.heading}>
         My Current Worth: <span style={{ color: '#57d028' }}>&nbsp;₹{totalData.toLocaleString()}</span>
       </h1>
-      <div className="flex justify-center" style={{ marginTop: '20px', marginBottom: '40px' }}>
-        <div className="border-2" style={{ width: '500px', height: '350px' }}>
-          <h1 className="text-2xl" style={{ paddingLeft: '10px', backgroundColor: '#57d028' }}>
-            I have: ₹{current.toLocaleString()}
-          </h1>
+      <div className={classes.component}>
+        <div className={classes.boxes}>
+          <h1 className={classes.heading1}>I have: ₹{current.toLocaleString()}</h1>
           <ResponsiveContainer width="95%" height={300} className="text-center">
             <PieChart width={600} height={600}>
               <Legend layout="horizontal" verticalAlign="top" align="center" height={300} width={400} />
@@ -81,10 +123,8 @@ function CurrentWorth() {
             </PieChart>
           </ResponsiveContainer>
         </div>
-        <div className="ml-8 border-2" style={{ width: '500px', height: '350px' }}>
-          <h1 className="pl-2 text-2xl" style={{ paddingLeft: '10px', backgroundColor: '#f16c6c' }}>
-            I owe: ₹{owe.toLocaleString()}
-          </h1>
+        <div className={classes.boxes}>
+          <h1 className={classes.heading2}>I owe: ₹{owe.toLocaleString()}</h1>
           <ResponsiveContainer width="95%" height={300} className="text-center">
             <PieChart width={600} height={600}>
               <Legend layout="horizontal" verticalAlign="top" align="center" height={300} width={200} />
