@@ -11,6 +11,16 @@ export function getDate(date = null)
     return Moment(date, 'DD/MM/YYYY');
 }
 
+export function getMonth(date = null)
+{
+    if (date === null)
+    {
+        return Moment(date).format('MMMM');
+    }
+
+    return Moment(date, "DD/MM/YYYY").format('MMMM');
+}
+
 export function getDateString(date: Moment.Moment)
 {
     return date.format('DD MMM YYYY')
