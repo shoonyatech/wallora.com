@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 /* eslint-disable react/no-array-index-key */
 import { gql, useQuery } from '@apollo/client'
 import { Button } from '@material-ui/core'
@@ -32,14 +31,6 @@ const useStyles = makeStyles(() =>
         fontWeight: 600,
       },
     },
-    values: {
-      borderRadius: 0,
-      width: '10rem',
-      background: '#ffd2ad',
-      '&:hover': {
-        background: '#ffd2ad',
-      },
-    },
     isActive: {
       borderWidth: '0 2px',
       borderStyle: 'solid',
@@ -51,21 +42,6 @@ const useStyles = makeStyles(() =>
       '&:hover': {
         background: '#255d6d',
       },
-    },
-    expenses: {
-      backgroundColor: '#ffd2ad',
-      borderRight: '1px solid #fff',
-      height: '20px',
-      width: '6rem',
-      textAlign: 'center',
-      fontSize: '0.9rem',
-    },
-    netBalance: {
-      borderRight: '1px solid #fff',
-      marginTop: '10px',
-      width: '6rem',
-      fontSize: '0.9rem',
-      textAlign: 'center',
     },
   })
 )
@@ -94,11 +70,8 @@ function FinanceMonthHeader({ endMonth, startMonth, activeColumn }: any) {
         <Loader open={loading} error={error} />
       </div>
     )
-  // months should be in name format (e.g. January) not number format (e.g. 01)
+
   const months = data.actualMonths
-  // const months = data.actualMonths
-  // const months = data.actualMonths
-  console.log(months)
 
   return (
     <div className="flex">
@@ -109,8 +82,8 @@ function FinanceMonthHeader({ endMonth, startMonth, activeColumn }: any) {
           <>
             {columnIndex === 0 && (
               <div>
-                <p className={classes.expenses}>Expenses</p>
-                <p className={classes.netBalance}>Net Balance</p>
+                <p className="bg-plannedExpense h-8 w-8 text-sm text-center">Expenses</p>
+                <p className=" h-8 w-24 mt-4 text-sm text-center">Net Balance</p>
               </div>
             )}
             <div key={x.month} className={`flex flex-col  ${isEqual(columnIndex, activeColumn) && classes.isActive}`}>
