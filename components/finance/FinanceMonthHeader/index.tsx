@@ -4,7 +4,7 @@ import { Button } from '@material-ui/core'
 import { createStyles, makeStyles } from '@material-ui/core/styles'
 import React from 'react'
 
-import { getMonth } from '../../../lib/date-helper'
+import { getDate } from '../../../lib/date-helper'
 import Loader from '../../common/Loader'
 
 const useStyles = makeStyles(() =>
@@ -62,7 +62,7 @@ function FinanceMonthHeader({ endMonth, startMonth, activeColumn }: any) {
   })
 
   const classes = useStyles()
-  const todayDisplayDate = getMonth()
+  const todayDisplayDate = getDate()
 
   if (loading || error)
     return (
@@ -82,8 +82,8 @@ function FinanceMonthHeader({ endMonth, startMonth, activeColumn }: any) {
           <>
             {columnIndex === 0 && (
               <div>
-                <p className="bg-plannedExpense h-8 w-8 text-sm text-center">Expenses</p>
-                <p className=" h-8 w-24 mt-4 text-sm text-center">Net Balance</p>
+                <p className="bg-plannedExpense h-8 w-24 text-sm text-center">Expenses</p>
+                <p className=" h-8 w-24 mt-2 text-sm text-center">Net Balance</p>
               </div>
             )}
             <div key={x.month} className={`flex flex-col  ${isEqual(columnIndex, activeColumn) && classes.isActive}`}>
