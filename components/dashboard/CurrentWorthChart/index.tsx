@@ -51,19 +51,34 @@ const useStyles = makeStyles((theme) => ({
 const CURRENT_WORTH = () => gql`
   query Chart {
     charts {
-      myCurrentWorth {
-        name
+      banks {
+        balance
+      }
+      investments {
+        currentValue
+      }
+      cashAtHome {
         amount
       }
-    }
-  }
-`
-
-const OWE_WORTH = () => gql`
-  query Chart {
-    charts {
-      myOweData {
-        name
+      creditCards {
+        outstandingBalance
+      }
+      loans {
+        outstandingPrincipal
+      }
+      realEstate {
+        amount
+      }
+      fixedDeposits {
+        amount
+      }
+      goldAndPreciousMetals {
+        amount
+      }
+      mutualFund {
+        amount
+      }
+      stocks {
         amount
       }
     }
@@ -72,16 +87,8 @@ const OWE_WORTH = () => gql`
 
 function CurrentWorth() {
   const { loading, error, data } = useQuery(CURRENT_WORTH())
-  const { loading: loadingOwned, error: errorOwned, data: dataOwe } = useQuery(OWE_WORTH())
   const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#E21226', '#FF66B2']
   const classes = useStyles()
-
-  if (errorOwned || loadingOwned)
-    return (
-      <div>
-        <Loader open={loadingOwned} error={errorOwned} />
-      </div>
-    )
 
   if (loading || error)
     return (
@@ -89,26 +96,37 @@ function CurrentWorth() {
         <Loader open={loading} error={error} />
       </div>
     )
-  const current = data.charts.myCurrentWorth.reduce((acc: any, curr: any) => acc + curr.amount, 0)
-  const owe = dataOwe.charts.myOweData.reduce((acc: any, curr: any) => acc + curr.amount, 0)
-  const totalData = current - owe
+
+  const { banks, investments, creditCards, loans } = data.charts
+
+  const bankTotal = banks.reduce((acc: any, curr: any) => acc + curr.balance, 0)
+  const investmentTotal = investments.reduce((acc: any, curr: any) => acc + curr.currentValue, 0)
+  const creditCardTotal = creditCards.reduce((acc: any, curr: any) => acc + curr.outstandingBalance, 0)
+  const loanTotal = loans.reduce((acc: any, curr: any) => acc + curr.outstandingPrincipal, 0)
+
+  const total = bankTotal + investmentTotal - (creditCardTotal + loanTotal)
+  const current = bankTotal + investmentTotal
+  const owe = creditCardTotal + loanTotal
 
   return (
     <div>
       <h1 className={classes.heading}>
-        My Current Worth: <span style={{ color: '#57d028' }}>&nbsp;₹{totalData.toLocaleString()}</span>
+        My Current Worth: <span style={{ color: '#57d028' }}>₹ {total.toLocaleString()}</span>
       </h1>
       <div className={classes.component}>
         <div className={classes.boxes}>
-          <h1 className={classes.heading1}>I have: ₹{current.toLocaleString()}</h1>
+          <h1 className={classes.heading1}>I have: ₹ {current.toLocaleString()}</h1>
           <ResponsiveContainer width="95%" height={300} className="text-center">
             <PieChart width={600} height={600}>
               <Legend layout="horizontal" verticalAlign="top" align="center" height={300} width={400} />
               <Pie
-                data={data.charts.myCurrentWorth}
+                data={[
+                  { name: 'Bank', value: bankTotal },
+                  { name: 'Investment', value: investmentTotal },
+                ]}
+                dataKey="value"
                 startAngle={180}
                 endAngle={0}
-                dataKey="amount"
                 nameKey="name"
                 cx="50%"
                 cy="50%"
@@ -116,23 +134,26 @@ function CurrentWorth() {
                 fill="#8884d8"
                 label
               >
-                {data.charts.myCurrentWorth.map((entry: any, index: any) => (
-                  <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                {data.charts.banks.map((entry: any, index: any) => (
+                  <Cell key={index} fill={COLORS[index]} />
                 ))}
               </Pie>
             </PieChart>
           </ResponsiveContainer>
         </div>
         <div className={classes.boxes}>
-          <h1 className={classes.heading2}>I owe: ₹{owe.toLocaleString()}</h1>
+          <h1 className={classes.heading2}>I owe: ₹ {owe.toLocaleString()}</h1>
           <ResponsiveContainer width="95%" height={300} className="text-center">
             <PieChart width={600} height={600}>
               <Legend layout="horizontal" verticalAlign="top" align="center" height={300} width={200} />
               <Pie
-                data={dataOwe.charts.myOweData}
+                data={[
+                  { name: 'Credit Card', value: creditCardTotal },
+                  { name: 'Loan', value: loanTotal },
+                ]}
                 startAngle={180}
                 endAngle={0}
-                dataKey="amount"
+                dataKey="value"
                 nameKey="name"
                 cx="50%"
                 cy="50%"
@@ -140,8 +161,8 @@ function CurrentWorth() {
                 fill="#8884d8"
                 label
               >
-                {dataOwe.charts.myOweData.map((entry: any, index: any) => (
-                  <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                {data.charts.creditCards.map((entry: any, index: any) => (
+                  <Cell key={index} fill={COLORS[index]} />
                 ))}
               </Pie>
             </PieChart>
