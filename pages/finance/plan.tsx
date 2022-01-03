@@ -4,7 +4,7 @@ import React, { useState } from 'react'
 import ControlButtons from '../../components/common/ControlButtons'
 import FinanceMonthHeader from '../../components/finance/FinanceMonthHeader'
 import FinanceSwitch from '../../components/finance/FinanceSwitch'
-import { dateAfterDays, dateBeforeDays } from '../../lib/date-helper'
+import { dateAfterDays, getDate } from '../../lib/date-helper'
 
 export default withPageAuthRequired(() => {
   const marginLeft = 384
@@ -13,7 +13,7 @@ export default withPageAuthRequired(() => {
   const dateColumns = Math.ceil(spreadSheetWidth / cellWidth)
 
   const [values, setValues] = useState({
-    startMonth: dateBeforeDays(3),
+    startMonth: getDate(),
     endMonth: dateAfterDays(Math.ceil(dateColumns * 22)),
   })
   const [activeCell] = useState([0, 0])
