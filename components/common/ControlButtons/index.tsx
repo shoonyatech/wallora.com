@@ -1,9 +1,21 @@
 import { Button, makeStyles } from '@material-ui/core'
 import React from 'react'
 
-import { dateAfterDays, dateBeforeDays, startDateAfterMonths, startDateBeforeMonths } from '../../../lib/date-helper'
+import {
+  dateAfterDays,
+  dateBeforeDays,
+  getDate,
+  startDateAfterMonths,
+  startDateBeforeMonths,
+} from '../../../lib/date-helper'
 
 const useStyles = makeStyles({
+  component: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: '800px',
+  },
   button: {
     marginLeft: '0.5rem',
     fontSize: '1rem',
@@ -14,7 +26,7 @@ const useStyles = makeStyles({
 function ControlButtons({ dateColumns, values, setValues }: any) {
   const classes = useStyles()
   return (
-    <div>
+    <div className={classes.component}>
       <Button
         size="medium"
         type="submit"
@@ -53,7 +65,7 @@ function ControlButtons({ dateColumns, values, setValues }: any) {
         className={classes.button}
         onClick={() =>
           setValues({
-            startMonth: dateBeforeDays(dateColumns / 2 - 1),
+            startMonth: getDate(),
             endMonth: dateAfterDays(dateColumns / 2 + 1),
           })
         }
