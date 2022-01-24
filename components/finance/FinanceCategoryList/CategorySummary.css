@@ -1,0 +1,10 @@
+.finance-category-summary-container {
+  height: 100%;
+  background-color: #f16c6c;
+  padding-left: 0;
+  padding: 0.625rem 0;
+}
+.finance-category-summary-details {
+  padding-left: 0.625rem;
+  font-size: 11px;
+}

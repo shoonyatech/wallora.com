@@ -23,6 +23,9 @@ const FinanceCategories = ({ columns, activeCell, setActiveCell }: financeCatego
         incomeOrExpense
         order
         id
+        plannedTotal
+        actualTotal
+        balanceTotal
       }
     }
   `

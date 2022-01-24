@@ -2,6 +2,7 @@
 /* eslint-disable global-require */
 
 import '../styles/global.css'
+import '../components/finance/FinanceCategoryList/CategorySummary.css';
 
 import { ApolloProvider } from '@apollo/client'
 import { UserProvider } from '@auth0/nextjs-auth0'

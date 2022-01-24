@@ -1,4 +1,5 @@
 import React from 'react'
+import CategorySummary from './CategorySummary'
 
 function FinanceCategoryList({ item, rowIndex, activeRow, summaryOnClick }: any) {
   return (
@@ -14,10 +15,16 @@ function FinanceCategoryList({ item, rowIndex, activeRow, summaryOnClick }: any)
         {item.name}
       </div>
       <div
-        className={`p-2.5 w-24 text-center ${
+        className={`w-24 text-center ${
           item.incomeOrExpense === 'expense' ? 'bg-plannedExpense' : 'bg-plannedIncome'
         }`}
-      />
+      >
+        <CategorySummary 
+          balanceTotal={item.balanceTotal} 
+          plannedTotal={item.plannedTotal} 
+          actualTotal={item.actualTotal}
+        />
+      </div>
     </>
   )
 }
