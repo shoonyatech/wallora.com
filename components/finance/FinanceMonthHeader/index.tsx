@@ -76,6 +76,7 @@ const useStyles = makeStyles(() =>
       height: '330px',
       borderTop: 'none',
       width: '1000px',
+      backgroundColor: 'white',
     },
   })
 )
