@@ -4,6 +4,8 @@ import React, { useState } from 'react'
 import ControlButtons from '../../components/common/ControlButtons'
 import FinanceMonthHeader from '../../components/finance/FinanceMonthHeader'
 import FinanceSwitch from '../../components/finance/FinanceSwitch'
+import PlanSidebar from '../../components/finance/PlanSidebar'
+import PlanSpreadSheet from '../../components/finance/PlanSpreadSheet'
 import { dateAfterDays, getDate } from '../../lib/date-helper'
 
 export default withPageAuthRequired(() => {
@@ -23,6 +25,10 @@ export default withPageAuthRequired(() => {
       <div className="grid grid-cols-financeHeader h-16">
         <FinanceSwitch actualOrPlan="Plan" />
         <FinanceMonthHeader startMonth={values.startMonth} endMonth={values.endMonth} activeColumn={activeCell[1]} />
+      </div>
+      <div className="flex">
+        <PlanSidebar />
+        <PlanSpreadSheet startMonth={values.startMonth} endMonth={values.endMonth} />
       </div>
       <div className="text-center block w-full bottom-0 m-4">
         <ControlButtons dateColumns={dateColumns} values={values} setValues={setValues} />
